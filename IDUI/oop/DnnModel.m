@@ -14,6 +14,14 @@ classdef DnnModel < handle
     end
     
     methods
+        %% konstruktor - umi nacist i ze souboru
+        function [this] = DnnModel(filePath)
+            if(nargin == 1)
+                this.loadFromBackup(filePath); 
+                disp(['instance is loaded from ' filePath]);
+            end
+        end
+        
         %% nauci se aproximova predane vstupy a vystupy
         function learn(this, inputs, targets, topology, maxTrainTime)
             % povinne jsou prvni dva argumenty "inputs, targets"
@@ -54,30 +62,34 @@ classdef DnnModel < handle
         %% nauci se optimalizovane aproximovat predane hodnoty
         function learnOptimized(this, inputs, targets)
             startTime = now();
-            topologyPatterns = [11 15 18]; %[11 15 18 20 25]; %[11 15 18 20 22 25 29];
+            topologyPatterns = {[10 10]; [8 8]; 15}; %[11 15 18 20 25]; %[11 15 18 20 22 25 29];
             replications = 5;
-            optimizedTopology = topologyPatterns(1)*ones(replications,1);
-            for k = topologyPatterns(2:end)
-                optimizedTopology = [optimizedTopology; k*ones(replications,1)];
+            count = 1; 
+            optimizedTopology = cell(replications*length(topologyPatterns),1);
+            for k = 1:length(topologyPatterns)
+                for j = 1:replications
+                    optimizedTopology{count} = topologyPatterns{k};
+                    count = count + 1;
+                end
             end
             maxTrainTimeInSec = 30;
             performance = ones(length(optimizedTopology), 1).*99;
-            optimizeData = zeros(length(optimizedTopology), 2);
+            optimizeData = cell(length(optimizedTopology), 2);
             mkdir(DnnModel.getDirName(startTime));
             %vlastni cyklus pro uceni a ukladani nejlepsich vysledku
             for k = 1:length(optimizedTopology)
-                this.learn(inputs, targets, optimizedTopology(k), maxTrainTimeInSec);
+                this.learn(inputs, targets, optimizedTopology{k}, maxTrainTimeInSec);
                 % vyhodnotit a pripadne spustit znovu
                 simplefitOutputs = sim(this.net, this.learnInputs);
                 actPerformance = perform(this.net,this.learnTargets,simplefitOutputs); %minimalizujeme
-                disp([num2str(k) '. info top/regress/perf [' num2str(optimizedTopology(k)) ', ' num2str(actPerformance) ']']);
+                disp([num2str(k) '. info top/regress/perf [' num2str(optimizedTopology{k}) ', ' num2str(actPerformance) ']']);
                 if(actPerformance < min(performance)) 
                     OopHelper.serialize([DnnModel.getDirName(startTime) '/' DnnModel.getFileName(k)], this);
                     disp('> model saved...');
                 end
                 performance(k) = actPerformance;
-                optimizeData(k,1) = optimizedTopology(k);
-                optimizeData(k,2) = actPerformance;
+                optimizeData{k,1} = num2str(optimizedTopology{k});
+                optimizeData{k,2} = actPerformance;
             end
             OopHelper.serialize([DnnModel.getDirName(startTime) '/measureInfo'], optimizeData); disp('info data saved...');
             [~, idx] = min(performance); disp(['best model is at ' num2str(idx)]);
