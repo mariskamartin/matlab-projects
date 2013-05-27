@@ -10,7 +10,7 @@ y=data.signals.values(1:trimCount,3)';
 
 %special ordering of input values specific for DIC
 %creates inputs
-inputs = [y(3:end); y(2:end-1); y(1:end-2); u(1:end-2)];
+inputs = [u(1:end-2); y(3:end); y(2:end-1); y(1:end-2)];
 %creates targets
 targets = u(2:end-1);
 

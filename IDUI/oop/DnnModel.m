@@ -4,6 +4,8 @@ classdef DnnModel < handle
     properties (Access = private)
         %% dynamicky neuronovy model soustavy
         net;
+        %% vysledky trenovani net
+        trainResults;
         %% pamet na vstupy u
         uMemory;
         %% pamet na vystupy y
@@ -36,33 +38,22 @@ classdef DnnModel < handle
             clear('this.net');
             this.net = fitnet(hiddenLayerSize);
             % Setup Division of Data for Training, Validation, Testing
-            this.net.divideParam.trainRatio = 75/100;
+            this.net.divideParam.trainRatio = 80/100;
             this.net.divideParam.valRatio = 10/100;
-            this.net.divideParam.testRatio = 15/100;
+            this.net.divideParam.testRatio = 10/100;
             % nezobrazovat okno uceni
             this.net.trainParam.showWindow = false;
             if(nargin == 5)
                 this.net.trainParam.time = maxTrainTime;
+                this.net.trainParam.max_fail = 1000;
             end
             % Train the Network
-            [this.net, ~] = train(this.net, inputs, targets);
-            %simulovat hodnoty
-%             simplefitOutputs = sim(this.net, inputs);
-            %spocitat regresi
-%             [r, ~, ~] = regression(targets, simplefitOutputs);
-            %zobrazit regresi
-%             plotregression(targets,simplefitOutputs);    
-            
-%             if(r > 0.99996)
-%                 disp('regression is OK');
-%             else
-%                 disp('regression is BAD');
-%             end            
+            [this.net, this.trainResults] = train(this.net, inputs, targets);
         end
         %% nauci se optimalizovane aproximovat predane hodnoty
         function learnOptimized(this, inputs, targets)
             startTime = now();
-            topologyPatterns = {[10 10]; [8 8]; 15}; %[11 15 18 20 25]; %[11 15 18 20 22 25 29];
+            topologyPatterns = {14; 18; 20; 25; [10 10]; [15 15]}; %[11 15 18 20 25]; %[11 15 18 20 22 25 29];
             replications = 5;
             count = 1; 
             optimizedTopology = cell(replications*length(topologyPatterns),1);
@@ -75,6 +66,7 @@ classdef DnnModel < handle
             maxTrainTimeInSec = 30;
             performance = ones(length(optimizedTopology), 1).*99;
             optimizeData = cell(length(optimizedTopology), 2);
+            %vyrobit slozku pro vysledky
             mkdir(DnnModel.getDirName(startTime));
             %vlastni cyklus pro uceni a ukladani nejlepsich vysledku
             for k = 1:length(optimizedTopology)
@@ -101,6 +93,7 @@ classdef DnnModel < handle
             disp('loading from backup...');
             backup = OopHelper.deserialize(fileName);
             this.net = backup.net;
+            this.trainResults = backup.trainResults;
             this.uMemory = backup.uMemory;
             this.yMemory = backup.yMemory;
             this.learnInputs = backup.learnInputs;
@@ -128,6 +121,10 @@ classdef DnnModel < handle
                 this.yMemory(2:end) = this.yMemory(1:end-1);
                 this.yMemory(1) = y;
                 this.uMemory(2:end) = this.uMemory(1:end-1);
+        end
+        %% vrati uvnitr ulozenou neutonovou sit
+        function net = getNet(this)
+            net = this.net;
         end
     end
     methods(Static, Access = private)
