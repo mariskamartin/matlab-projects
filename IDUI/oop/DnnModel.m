@@ -69,9 +69,8 @@ classdef DnnModel < handle
                 this.learn(inputs, targets, optimizedTopology(k), maxTrainTimeInSec);
                 % vyhodnotit a pripadne spustit znovu
                 simplefitOutputs = sim(this.net, this.learnInputs);
-                [r, ~, ~] = regression(this.learnTargets, simplefitOutputs); %maximalizujeme
                 actPerformance = perform(this.net,this.learnTargets,simplefitOutputs); %minimalizujeme
-                disp([num2str(k) '. info top/regress/perf [' num2str(optimizedTopology(k)) ', ' num2str(r) ', ' num2str(actPerformance) ']']);
+                disp([num2str(k) '. info top/regress/perf [' num2str(optimizedTopology(k)) ', ' num2str(actPerformance) ']']);
                 if(actPerformance < min(performance)) 
                     OopHelper.serialize([DnnModel.getDirName(startTime) '/' DnnModel.getFileName(k)], this);
                     disp('> model saved...');
