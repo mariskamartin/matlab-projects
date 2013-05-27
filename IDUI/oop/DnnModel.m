@@ -53,7 +53,8 @@ classdef DnnModel < handle
         end
         %% nauci se optimalizovane aproximovat predane hodnoty
         function learnOptimized(this, inputs, targets)
-            topologyPatterns = [11 15 18 20 22 25 29];
+            startTime = now();
+            topologyPatterns = [11 15 18 20 25]; %[11 15 18 20 22 25 29];
             replications = 10;
             optimizedTopology = topologyPatterns(1)*ones(replications,1);
             for k = topologyPatterns(2:end)
@@ -62,7 +63,7 @@ classdef DnnModel < handle
             maxTrainTimeInSec = 30;
             performance = ones(length(optimizedTopology), 1).*99;
             optimizeData = zeros(length(optimizedTopology), 2);
-            mkdir(DnnModel.getDirName());
+            mkdir(DnnModel.getDirName(startTime));
             %vlastni cyklus pro uceni a ukladani nejlepsich vysledku
             for k = 1:length(optimizedTopology)
                 this.learn(inputs, targets, optimizedTopology(k), maxTrainTimeInSec);
@@ -72,17 +73,17 @@ classdef DnnModel < handle
                 actPerformance = perform(this.net,this.learnTargets,simplefitOutputs); %minimalizujeme
                 disp([num2str(k) '. info top/regress/perf [' num2str(optimizedTopology(k)) ', ' num2str(r) ', ' num2str(actPerformance) ']']);
                 if(actPerformance < min(performance)) 
-                    OopHelper.serialize(DnnModel.getFileName(k), this);
+                    OopHelper.serialize([DnnModel.getDirName(startTime) '/' DnnModel.getFileName(k)], this);
                     disp('> model saved...');
                 end
                 performance(k) = actPerformance;
                 optimizeData(k,1) = optimizedTopology(k);
                 optimizeData(k,2) = actPerformance;
             end
-            OopHelper.serialize([DnnModel.getDirName() '/measureInfo'], optimizeData); disp('info data saved...');
+            OopHelper.serialize([DnnModel.getDirName(startTime) '/measureInfo'], optimizeData); disp('info data saved...');
             [~, idx] = min(performance); disp(['best model is at ' num2str(idx)]);
             %nahrat ze zalohy nejlepsi pokus
-            this.loadFromBackup(DnnModel.getFileName(idx)); disp('best model loaded...');
+            this.loadFromBackup([DnnModel.getDirName(startTime) '/' DnnModel.getFileName(idx)]); disp('best model loaded...');
         end
         %% nacte se instance serializovana v zaloznim souboru
         function loadFromBackup(this, fileName)
@@ -119,11 +120,14 @@ classdef DnnModel < handle
         end
     end
     methods(Static, Access = private)
-        function dirName = getDirName()
-            dirName = ['cache_' date()];
+        function dirName = getDirName(datum)
+            if(nargin < 1)
+                datum = now();
+            end
+            dirName = ['cache_' datestr(datum,'yyyy-mm-dd_HHMMss')];
         end
         function fileName = getFileName(number)
-            fileName = [DnnModel.getDirName() '/modelSave' num2str(number)];
+            fileName = ['modelSave' num2str(number)];
         end
     end
 end

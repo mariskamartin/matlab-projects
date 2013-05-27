@@ -1,6 +1,7 @@
 help = ones(1,60);
 %prubeh zadane
-simInput = [help*0.1 help*-0.6 help*0.9 help*-0.2];
+simInput = [help*0.1 help*-0.6 help*0.9 help*-0.2 help*0.5 help*-0.4];
+% simInput = [help*rand() help*-1*rand() help*rand() help*-1*rand()];
 %inicilalizace vystupniho vektoru
 simOutput = zeros(length(simInput),1);
 
