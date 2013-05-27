@@ -1,0 +1,27 @@
+>> createModel
+1. info top/regress/perf [11, 0.99995, 2.5507e-05]
+> model saved...
+2. info top/regress/perf [11, 0.99995, 2.5024e-05]
+> model saved...
+3. info top/regress/perf [11, 0.99995, 2.5129e-05]
+4. info top/regress/perf [11, 0.99995, 2.6092e-05]
+5. info top/regress/perf [11, 0.99995, 2.5995e-05]
+6. info top/regress/perf [18, 0.99995, 2.5339e-05]
+7. info top/regress/perf [18, 0.99996, 2.4668e-05]
+> model saved...
+8. info top/regress/perf [18, 0.99996, 2.2422e-05]
+> model saved...
+9. info top/regress/perf [18, 0.99995, 2.579e-05]
+10. info top/regress/perf [18, 0.99996, 2.315e-05]
+11. info top/regress/perf [20, 0.99996, 2.1801e-05]
+> model saved...
+12. info top/regress/perf [20, 0.99996, 2.126e-05]
+> model saved...
+13. info top/regress/perf [20, 0.99995, 2.5538e-05]
+14. info top/regress/perf [20, 0.99997, 1.8237e-05]
+> model saved...
+15. info top/regress/perf [20, 0.99996, 2.1395e-05]
+16. info top/regress/perf [22, 0.99996, 2.2817e-05]
+17. info top/regress/perf [22, 0.99996, 2.3812e-05]
+18. info top/regress/perf [22, 0.99996, 2.1508e-05]
+19. info top/regress/perf [22, 0.99996, 2.2509e-05]
