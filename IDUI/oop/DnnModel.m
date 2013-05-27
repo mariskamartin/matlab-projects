@@ -53,7 +53,7 @@ classdef DnnModel < handle
         end
         %% nauci se optimalizovane aproximovat predane hodnoty
         function learnOptimized(this, inputs, targets)
-            topologyPatterns = [11 18 20 22 25 26 27 28 29 30];
+            topologyPatterns = [11 15 18 20 22 25 29];
             replications = 10;
             optimizedTopology = topologyPatterns(1)*ones(replications,1);
             for k = topologyPatterns(2:end)
