@@ -55,7 +55,7 @@ classdef DnnModel < handle
         function learnOptimized(this, inputs, targets)
             startTime = now();
             topologyPatterns = [11 15 18]; %[11 15 18 20 25]; %[11 15 18 20 22 25 29];
-            replications = 15;
+            replications = 5;
             optimizedTopology = topologyPatterns(1)*ones(replications,1);
             for k = topologyPatterns(2:end)
                 optimizedTopology = [optimizedTopology; k*ones(replications,1)];
