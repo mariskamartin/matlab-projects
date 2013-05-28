@@ -45,6 +45,7 @@ classdef DnnModel < handle
             this.net.trainParam.showWindow = false;
             if(nargin == 5)
                 this.net.trainParam.time = maxTrainTime;
+                this.net.trainParam.epochs = 200;
                 this.net.trainParam.max_fail = 1000;
             end
             % Train the Network
@@ -53,7 +54,7 @@ classdef DnnModel < handle
         %% nauci se optimalizovane aproximovat predane hodnoty
         function learnOptimized(this, inputs, targets)
             startTime = now();
-            topologyPatterns = {14; 18; 20; 25; [10 10]; [15 15]}; %[11 15 18 20 25]; %[11 15 18 20 22 25 29];
+            topologyPatterns = {20; 30; [10 10 10]; [10 10]}; %[11 15 18 20 25]; %[11 15 18 20 22 25 29];
             replications = 5;
             count = 1; 
             optimizedTopology = cell(replications*length(topologyPatterns),1);

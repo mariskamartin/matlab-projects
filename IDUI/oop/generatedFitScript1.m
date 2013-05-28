@@ -20,14 +20,19 @@ inputs = [y(3:end); y(2:end-1); y(1:end-2); u(1:end-2)];
 targets = u(2:end-1);
 
 % Create a Fitting Network
-hiddenLayerSize = [8 8 8];
+hiddenLayerSize = [10 10 10];
 net = fitnet(hiddenLayerSize);
 
 
-% Setup Division of Data for Training, Validation, Testing
-net.divideParam.trainRatio = 90/100;
-net.divideParam.valRatio = 5/100;
-net.divideParam.testRatio = 5/100;
+% Setup Identation Division of Data for Training, Validation, Testing
+net.divideFcn = 'divideind';
+net.divideParam.trainInd=1:(trimCount-1000);
+net.divideParam.valInd=(trimCount-1000):(trimCount-500);    
+net.divideParam.testInd=(trimCount-500):trimCount; 
+
+% net.divideParam.trainRatio = 80/100;
+% net.divideParam.valRatio = 10/100;
+% net.divideParam.testRatio = 10/100;
 
 net.trainParam.max_fail = 1000;
 
