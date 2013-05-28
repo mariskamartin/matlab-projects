@@ -8,7 +8,7 @@
 %   targets - target data.
 load data;
 
-trimCount = 14000; %omezeni dat
+trimCount = 5000; %omezeni dat
 t=data.signals.values(1:trimCount,1)'; %t,u,y .. radkove vektory
 u=data.signals.values(1:trimCount,2)';
 y=data.signals.values(1:trimCount,3)';
@@ -20,15 +20,15 @@ inputs = [y(3:end); y(2:end-1); y(1:end-2); u(1:end-2)];
 targets = u(2:end-1);
 
 % Create a Fitting Network
-hiddenLayerSize = [10 10 10];
+hiddenLayerSize = [30];
 net = fitnet(hiddenLayerSize);
 
 
 % Setup Identation Division of Data for Training, Validation, Testing
 net.divideFcn = 'divideind';
 net.divideParam.trainInd=1:(trimCount-1000);
-net.divideParam.valInd=(trimCount-1000):(trimCount-500);    
-net.divideParam.testInd=(trimCount-500):trimCount; 
+net.divideParam.valInd=(trimCount-999):(trimCount-500);    
+net.divideParam.testInd=(trimCount-499):trimCount; 
 
 % net.divideParam.trainRatio = 80/100;
 % net.divideParam.valRatio = 10/100;
