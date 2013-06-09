@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.164"
+    ComputedModelVersion    "1.179"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -27,9 +27,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "MAR"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Jun 09 11:52:11 2013"
-  RTWModifiedTimeStamp	  292678704
-  ModelVersionFormat	  "1.%<AutoIncrement:164>"
+  LastModifiedDate	  "Sun Jun 09 12:47:33 2013"
+  RTWModifiedTimeStamp	  292682828
+  ModelVersionFormat	  "1.%<AutoIncrement:179>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -113,7 +113,7 @@ Model {
 	  $ObjectID		  2
 	  Version		  "1.12.0"
 	  StartTime		  "0.0"
-	  StopTime		  "2000"
+	  StopTime		  "2500"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -696,6 +696,14 @@ Model {
       InitialOutput	      "[]"
     }
     Block {
+      BlockType		      RandomNumber
+      Mean		      "0"
+      Variance		      "1"
+      Seed		      "0"
+      SampleTime	      "-1"
+      VectorParams1D	      on
+    }
+    Block {
       BlockType		      Saturate
       UpperLimitSource	      "Dialog"
       UpperLimit	      "0.5"
@@ -811,7 +819,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "2802"
+    SIDHighWatermark	    "2804"
     Block {
       BlockType		      SubSystem
       Name		      "DC Motor1"
@@ -3176,11 +3184,22 @@ Model {
       DisplayOption	      "bar"
     }
     Block {
+      BlockType		      RandomNumber
+      Name		      "Random\nNumber"
+      SID		      "2803"
+      Position		      [30, 310, 60, 340]
+      ZOrder		      -15
+      Mean		      "0.5"
+      Variance		      "0.1"
+      Seed		      "12"
+      SampleTime	      "25"
+    }
+    Block {
       BlockType		      Reference
       Name		      "Repeating\nSequence\nStair"
       SID		      "42"
       Ports		      [0, 1]
-      Position		      [30, 320, 60, 350]
+      Position		      [30, 380, 60, 410]
       ZOrder		      -18
       LibraryVersion	      "1.260"
       SourceBlock	      "simulink/Sources/Repeating\nSequence\nStair"
@@ -3195,6 +3214,17 @@ Model {
       ConRadixGroup	      "Best Precision: Vector-wise"
       OutScaling	      "2^-12"
       LockScale		      off
+    }
+    Block {
+      BlockType		      Saturate
+      Name		      "Saturation"
+      SID		      "2804"
+      Ports		      [1, 1]
+      Position		      [90, 225, 120, 255]
+      ZOrder		      -15
+      InputPortMap	      "u0"
+      UpperLimit	      "1"
+      LowerLimit	      "0"
     }
     Block {
       BlockType		      Scope
@@ -3226,7 +3256,7 @@ Model {
       DataFormat	      "StructureWithTime"
       MaxDataPoints	      "10000"
       SampleInput	      on
-      SampleTime	      "0.5"
+      SampleTime	      "0.25"
     }
     Block {
       BlockType		      Sum
@@ -3251,7 +3281,7 @@ Model {
       ZOrder		      -7
       VariableName	      "data"
       MaxDataPoints	      "inf"
-      SampleTime	      "0.5"
+      SampleTime	      "0.25"
       SaveFormat	      "Structure With Time"
     }
     Block {
@@ -3261,7 +3291,7 @@ Model {
       Position		      [30, 224, 60, 256]
       ZOrder		      -23
       Minimum		      "0"
-      Seed		      "9"
+      Seed		      "8"
       SampleTime	      "25"
     }
     Block {
@@ -3324,16 +3354,8 @@ Model {
     Line {
       SrcBlock		      "Uniform Random\nNumber"
       SrcPort		      1
-      Points		      [135, 0]
-      Branch {
-	Points			[0, -60]
-	DstBlock		"Mux1"
-	DstPort			1
-      }
-      Branch {
-	DstBlock		"Sum"
-	DstPort			1
-      }
+      DstBlock		      "Saturation"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "Mux2"
@@ -3346,6 +3368,20 @@ Model {
       SrcPort		      1
       DstBlock		      "Discrete PID Controller"
       DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Saturation"
+      SrcPort		      1
+      Points		      [75, 0]
+      Branch {
+	Points			[0, -60]
+	DstBlock		"Mux1"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"Sum"
+	DstPort			1
+      }
     }
     Annotation {
       SID		      "143"
