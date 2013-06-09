@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.159"
+    ComputedModelVersion    "1.164"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -27,9 +27,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "MAR"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jun 06 22:13:20 2013"
-  RTWModifiedTimeStamp	  292453973
-  ModelVersionFormat	  "1.%<AutoIncrement:159>"
+  LastModifiedDate	  "Sun Jun 09 11:52:11 2013"
+  RTWModifiedTimeStamp	  292678704
+  ModelVersionFormat	  "1.%<AutoIncrement:164>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -811,7 +811,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "2716"
+    SIDHighWatermark	    "2802"
     Block {
       BlockType		      SubSystem
       Name		      "DC Motor1"
@@ -848,73 +848,11 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Block {
-	  BlockType		  Mux
-	  Name			  "Mux1"
-	  SID			  "1728"
-	  Ports			  [4, 1]
-	  Position		  [390, 17, 395, 253]
-	  ZOrder		  -16
-	  ShowName		  off
-	  DisplayOption		  "bar"
-	}
-	Block {
-	  BlockType		  Saturate
-	  Name			  "Saturation"
-	  SID			  "1060"
-	  Ports			  [1, 1]
-	  Position		  [70, 150, 100, 180]
-	  ZOrder		  -15
-	  InputPortMap		  "u0"
-	  UpperLimit		  "1"
-	  LowerLimit		  "-1"
-	}
-	Block {
-	  BlockType		  Saturate
-	  Name			  "Saturation1"
-	  SID			  "1732"
-	  Ports			  [1, 1]
-	  Position		  [550, 120, 580, 150]
-	  ZOrder		  -15
-	  InputPortMap		  "u0"
-	  UpperLimit		  "1"
-	  LowerLimit		  "-1"
-	}
-	Block {
-	  BlockType		  UnitDelay
-	  Name			  "Unit Delay1"
-	  SID			  "1730"
-	  Position		  [210, 28, 245, 62]
-	  ZOrder		  -21
-	  X0			  "-1"
-	  InputProcessing	  "Elements as channels (sample based)"
-	  SampleTime		  "0.25"
-	}
-	Block {
-	  BlockType		  UnitDelay
-	  Name			  "Unit Delay2"
-	  SID			  "1731"
-	  Position		  [315, 208, 350, 242]
-	  ZOrder		  -21
-	  X0			  "-1"
-	  InputProcessing	  "Elements as channels (sample based)"
-	  SampleTime		  "0.25"
-	}
-	Block {
-	  BlockType		  UnitDelay
-	  Name			  "Unit Delay3"
-	  SID			  "1857"
-	  Position		  [315, 88, 350, 122]
-	  ZOrder		  -21
-	  X0			  "-1"
-	  InputProcessing	  "Elements as channels (sample based)"
-	  SampleTime		  "0.25"
-	}
-	Block {
 	  BlockType		  SubSystem
-	  Name			  "optim DNM"
-	  SID			  "1643"
+	  Name			  "Custom Neural Network"
+	  SID			  "2717"
 	  Ports			  [1, 1]
-	  Position		  [435, 92, 510, 178]
+	  Position		  [445, 65, 585, 205]
 	  ZOrder		  3
 	  MinAlgLoopOccurrences	  off
 	  PropExecContextOutsideSubsystem off
@@ -923,7 +861,7 @@ Model {
 	  Opaque		  off
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
-	  MaskDescription	  "Function Fitting Neural Network"
+	  MaskDescription	  "Custom Neural Network"
 	  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1 "
 	  "1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e],"
 	  "c3);plot([0 1 1 0 0],[0 0 1 1 0]);fprintf('NNET');port_label('input',1,' Input');port_label('output',1,'Output ');"
@@ -933,7 +871,7 @@ Model {
 	  MaskPortRotate	  "default"
 	  MaskIconUnits		  "autoscale"
 	  System {
-	    Name		    "optim DNM"
+	    Name		    "Custom Neural Network"
 	    Location		    [484, 93, 1020, 382]
 	    Open		    off
 	    ModelBrowserVisibility  off
@@ -950,7 +888,7 @@ Model {
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Input"
-	      SID		      "1644"
+	      SID		      "2718"
 	      Position		      [40, 40, 60, 60]
 	      ZOrder		      1
 	      IconDisplay	      "Port number"
@@ -968,7 +906,7 @@ Model {
 	    Block {
 	      BlockType		      From
 	      Name		      " a{1} "
-	      SID		      "1645"
+	      SID		      "2719"
 	      Position		      [40, 120, 60, 140]
 	      ZOrder		      5
 	      GotoTag		      "feedback1"
@@ -982,7 +920,7 @@ Model {
 	    Block {
 	      BlockType		      SubSystem
 	      Name		      "Layer 1"
-	      SID		      "1646"
+	      SID		      "2720"
 	      Ports		      [1, 1]
 	      Position		      [190, 40, 250, 60]
 	      ZOrder		      7
@@ -1019,7 +957,7 @@ Model {
 		Block {
 		  BlockType		  Inport
 		  Name			  "p{1}"
-		  SID			  "1647"
+		  SID			  "2721"
 		  Position		  [20, 40, 60, 80]
 		  ZOrder		  4
 		  IconDisplay		  "Port number"
@@ -1037,7 +975,7 @@ Model {
 		Block {
 		  BlockType		  SubSystem
 		  Name			  "Delays 1"
-		  SID			  "1648"
+		  SID			  "2722"
 		  Ports			  [1, 1]
 		  Position		  [100, 40, 140, 80]
 		  ZOrder		  5
@@ -1074,7 +1012,7 @@ Model {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "p{1}"
-		    SID			    "1649"
+		    SID			    "2723"
 		    Position		    [60, 40, 80, 60]
 		    ZOrder		    1
 		    BlockRotation	    270
@@ -1095,7 +1033,7 @@ Model {
 		    Block {
 		    BlockType		    Mux
 		    Name		    "mux"
-		    SID			    "1650"
+		    SID			    "2724"
 		    Ports		    [1, 1]
 		    Position		    [200, 60, 240, 80]
 		    ZOrder		    2
@@ -1112,7 +1050,7 @@ Model {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "pd{1,1}"
-		    SID			    "1651"
+		    SID			    "2725"
 		    Position		    [300, 60, 320, 80]
 		    ZOrder		    3
 		    IconDisplay		    "Port number"
@@ -1142,7 +1080,7 @@ Model {
 		Block {
 		  BlockType		  SubSystem
 		  Name			  "IW{1,1}"
-		  SID			  "1652"
+		  SID			  "2726"
 		  Ports			  [1, 1]
 		  Position		  [180, 40, 220, 80]
 		  ZOrder		  6
@@ -1179,7 +1117,7 @@ Model {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "pd{1,1}"
-		    SID			    "1653"
+		    SID			    "2727"
 		    Position		    [40, 630, 60, 650]
 		    ZOrder		    1
 		    IconDisplay		    "Port number"
@@ -1197,10 +1135,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(1,:)'"
-		    SID			    "1654"
+		    SID			    "2728"
 		    Position		    [140, 40, 180, 60]
 		    ZOrder		    3
-		    Value		    "[2.2475891687890921;-0.565621771315856;0.74525688557930669;-1.2018396746937932]"
+		    Value		    "[-1.4751739306604077;3.0098488983095177;1.2961540289537985;-0.041202033734804522]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1213,10 +1151,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(10,:)'"
-		    SID			    "1655"
+		    SID			    "2729"
 		    Position		    [140, 580, 180, 600]
 		    ZOrder		    21
-		    Value		    "[1.7464660103584935;1.0533853236990944;1.8966299213289823;-0.026039316773347886]"
+		    Value		    "[0.13912020220658128;1.5190337834508483;1.5793590833286222;2.2528631599714983]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1229,10 +1167,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(11,:)'"
-		    SID			    "1656"
+		    SID			    "2730"
 		    Position		    [140, 640, 180, 660]
 		    ZOrder		    23
-		    Value		    "[2.3090554014241182;1.6568088510412331;3.3757825853711245;-2.2963843099994539]"
+		    Value		    "[1.5821483406486281;0.091734720108463286;-0.86963684608856917;-0.73600867835299744]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1245,10 +1183,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(12,:)'"
-		    SID			    "1657"
+		    SID			    "2731"
 		    Position		    [140, 700, 180, 720]
 		    ZOrder		    25
-		    Value		    "[1.5697362138604929;3.1394820707535538;1.911374888330746;1.013088993727244]"
+		    Value		    "[1.7995657712223168;2.0436770393305919;-1.4298591729147117;0.65336296593096543]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1261,10 +1199,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(13,:)'"
-		    SID			    "1658"
+		    SID			    "2732"
 		    Position		    [140, 760, 180, 780]
 		    ZOrder		    27
-		    Value		    "[-0.26307798500305152;1.7538143538570838;0.20990133871867392;-0.77541821506634112]"
+		    Value		    "[1.3413962955398289;-2.0307535679339201;0.46826755337370163;0.035007315988503672]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1277,10 +1215,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(14,:)'"
-		    SID			    "1659"
+		    SID			    "2733"
 		    Position		    [140, 820, 180, 840]
 		    ZOrder		    29
-		    Value		    "[-5.3270657721177166;3.0284123381939629;0.92290367872830104;1.5635258354992336]"
+		    Value		    "[1.3784976284700912;-0.5136062870030752;-2.1455378190634078;-1.3978566146468132]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1293,10 +1231,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(15,:)'"
-		    SID			    "1660"
+		    SID			    "2734"
 		    Position		    [140, 880, 180, 900]
 		    ZOrder		    31
-		    Value		    "[1.5336460322849934;-0.70600390311672523;-0.52991890209150727;4.2787362251195438]"
+		    Value		    "[0.20699449408856149;-2.799474989046923;0.70989810217106086;0.30877104480307277]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1309,10 +1247,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(16,:)'"
-		    SID			    "1661"
+		    SID			    "2735"
 		    Position		    [140, 940, 180, 960]
 		    ZOrder		    33
-		    Value		    "[0.69149049189929301;-2.0554768432536306;2.5084969642737627;0.51185459788171106]"
+		    Value		    "[1.5175216927500357;-0.83791692393329964;-3.0245247797944503;-0.53879669659115592]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1325,10 +1263,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(17,:)'"
-		    SID			    "1662"
+		    SID			    "2736"
 		    Position		    [140, 1000, 180, 1020]
 		    ZOrder		    35
-		    Value		    "[0.037192356999250387;0.87839968328114471;-1.1205547194576149;2.6514631121634773]"
+		    Value		    "[0.79755178682332017;2.3697861682691777;-0.90205245359951525;-0.094778939003574245]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1341,10 +1279,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(18,:)'"
-		    SID			    "1663"
+		    SID			    "2737"
 		    Position		    [140, 1060, 180, 1080]
 		    ZOrder		    37
-		    Value		    "[0.73808857267263595;-2.2216507925191276;0.45760279789832303;-0.071458243484481071]"
+		    Value		    "[0.52404685248052008;-1.47706902723475;-2.7172253181428689;-0.14969707869916743]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1357,10 +1295,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(19,:)'"
-		    SID			    "1664"
+		    SID			    "2738"
 		    Position		    [140, 1120, 180, 1140]
 		    ZOrder		    39
-		    Value		    "[0.52355971930596601;-3.0514989099448817;-1.7117291219141717;0.26733070150250277]"
+		    Value		    "[1.116541674929487;0.88291388149171568;-0.35183571424696136;-0.20831972538050217]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1373,10 +1311,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(2,:)'"
-		    SID			    "1665"
+		    SID			    "2739"
 		    Position		    [140, 100, 180, 120]
 		    ZOrder		    5
-		    Value		    "[2.9399716982723447;0.99382984879081793;2.7148299582801321;-0.86517758452141724]"
+		    Value		    "[0.73286302821412286;-1.9591932276288804;-1.0213925963776942;-0.61186460395005882]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1389,10 +1327,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(20,:)'"
-		    SID			    "1666"
+		    SID			    "2740"
 		    Position		    [140, 1180, 180, 1200]
 		    ZOrder		    41
-		    Value		    "[-2.2614350013286888;-0.82392414361587152;1.4568985979688043;-0.29964639561362821]"
+		    Value		    "[2.5193947647623003;0.054855588090343577;-0.62300830229641957;0.41232034327521966]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1405,10 +1343,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(3,:)'"
-		    SID			    "1667"
+		    SID			    "2741"
 		    Position		    [140, 160, 180, 180]
 		    ZOrder		    7
-		    Value		    "[-1.5659353435778813;-1.0450081253455048;3.8722080942955515;0.46838518049694899]"
+		    Value		    "[0.11596611461175332;2.11847120942608;-3.5959254574818424;-0.52963795894526311]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1421,10 +1359,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(4,:)'"
-		    SID			    "1668"
+		    SID			    "2742"
 		    Position		    [140, 220, 180, 240]
 		    ZOrder		    9
-		    Value		    "[-0.60263044357660234;-0.68076703059280563;-1.9862462295528354;0.50192735256864285]"
+		    Value		    "[-0.73956063601674171;-0.10595392318456832;1.138274359998384;2.1326557587566066]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1437,10 +1375,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(5,:)'"
-		    SID			    "1669"
+		    SID			    "2743"
 		    Position		    [140, 280, 180, 300]
 		    ZOrder		    11
-		    Value		    "[6.0897680029517423;-0.76886589393305627;0.69982783479912447;-2.2047509275148212]"
+		    Value		    "[-2.0314446191669511;-0.14715560208071546;2.2618957603830259;1.0231758287650004]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1453,10 +1391,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(6,:)'"
-		    SID			    "1670"
+		    SID			    "2744"
 		    Position		    [140, 340, 180, 360]
 		    ZOrder		    13
-		    Value		    "[-3.2228195515563387;3.3478559449565823;-0.049160277054951379;0.060781119760332881]"
+		    Value		    "[-0.96684736391643822;-0.26852668554929682;0.7654426828458808;-0.099279816814274252]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1469,10 +1407,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(7,:)'"
-		    SID			    "1671"
+		    SID			    "2745"
 		    Position		    [140, 400, 180, 420]
 		    ZOrder		    15
-		    Value		    "[-0.51134310493442181;-0.73571350993474716;1.337872852542543;0.08418666690776852]"
+		    Value		    "[0.69348758214067763;-0.0023598878134531986;0.77736307973653851;0.024226136718856834]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1485,10 +1423,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(8,:)'"
-		    SID			    "1672"
+		    SID			    "2746"
 		    Position		    [140, 460, 180, 480]
 		    ZOrder		    17
-		    Value		    "[-2.0490603729053776;2.3184552468838384;-0.59767881161042924;-2.244272832050171]"
+		    Value		    "[0.66543088980690024;0.2546483107386508;0.42672319331587011;-0.093012280180160917]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1501,10 +1439,10 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{1,1}(9,:)'"
-		    SID			    "1673"
+		    SID			    "2747"
 		    Position		    [140, 520, 180, 540]
 		    ZOrder		    19
-		    Value		    "[7.4742007663349961;-7.4119159912696402;-0.074970692130280514;0.039119378875728875]"
+		    Value		    "[-3.4273732900587541;3.9448602514675879;-0.49203190930441221;0.02782921528092281]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
@@ -1517,7 +1455,7 @@ Model {
 		    Block {
 		    BlockType		    Mux
 		    Name		    "Mux"
-		    SID			    "1674"
+		    SID			    "2748"
 		    Ports		    [20, 1]
 		    Position		    [340, 595, 380, 690]
 		    ZOrder		    42
@@ -1534,7 +1472,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod1"
-		    SID			    "1675"
+		    SID			    "2749"
 		    Ports		    [2, 1]
 		    Position		    [240, 40, 260, 80]
 		    ZOrder		    2
@@ -1545,7 +1483,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod10"
-		    SID			    "1676"
+		    SID			    "2750"
 		    Ports		    [2, 1]
 		    Position		    [240, 580, 260, 620]
 		    ZOrder		    20
@@ -1556,7 +1494,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod11"
-		    SID			    "1677"
+		    SID			    "2751"
 		    Ports		    [2, 1]
 		    Position		    [240, 640, 260, 680]
 		    ZOrder		    22
@@ -1567,7 +1505,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod12"
-		    SID			    "1678"
+		    SID			    "2752"
 		    Ports		    [2, 1]
 		    Position		    [240, 700, 260, 740]
 		    ZOrder		    24
@@ -1578,7 +1516,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod13"
-		    SID			    "1679"
+		    SID			    "2753"
 		    Ports		    [2, 1]
 		    Position		    [240, 760, 260, 800]
 		    ZOrder		    26
@@ -1589,7 +1527,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod14"
-		    SID			    "1680"
+		    SID			    "2754"
 		    Ports		    [2, 1]
 		    Position		    [240, 820, 260, 860]
 		    ZOrder		    28
@@ -1600,7 +1538,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod15"
-		    SID			    "1681"
+		    SID			    "2755"
 		    Ports		    [2, 1]
 		    Position		    [240, 880, 260, 920]
 		    ZOrder		    30
@@ -1611,7 +1549,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod16"
-		    SID			    "1682"
+		    SID			    "2756"
 		    Ports		    [2, 1]
 		    Position		    [240, 940, 260, 980]
 		    ZOrder		    32
@@ -1622,7 +1560,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod17"
-		    SID			    "1683"
+		    SID			    "2757"
 		    Ports		    [2, 1]
 		    Position		    [240, 1000, 260, 1040]
 		    ZOrder		    34
@@ -1633,7 +1571,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod18"
-		    SID			    "1684"
+		    SID			    "2758"
 		    Ports		    [2, 1]
 		    Position		    [240, 1060, 260, 1100]
 		    ZOrder		    36
@@ -1644,7 +1582,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod19"
-		    SID			    "1685"
+		    SID			    "2759"
 		    Ports		    [2, 1]
 		    Position		    [240, 1120, 260, 1160]
 		    ZOrder		    38
@@ -1655,7 +1593,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod2"
-		    SID			    "1686"
+		    SID			    "2760"
 		    Ports		    [2, 1]
 		    Position		    [240, 100, 260, 140]
 		    ZOrder		    4
@@ -1666,7 +1604,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod20"
-		    SID			    "1687"
+		    SID			    "2761"
 		    Ports		    [2, 1]
 		    Position		    [240, 1180, 260, 1220]
 		    ZOrder		    40
@@ -1677,7 +1615,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod3"
-		    SID			    "1688"
+		    SID			    "2762"
 		    Ports		    [2, 1]
 		    Position		    [240, 160, 260, 200]
 		    ZOrder		    6
@@ -1688,7 +1626,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod4"
-		    SID			    "1689"
+		    SID			    "2763"
 		    Ports		    [2, 1]
 		    Position		    [240, 220, 260, 260]
 		    ZOrder		    8
@@ -1699,7 +1637,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod5"
-		    SID			    "1690"
+		    SID			    "2764"
 		    Ports		    [2, 1]
 		    Position		    [240, 280, 260, 320]
 		    ZOrder		    10
@@ -1710,7 +1648,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod6"
-		    SID			    "1691"
+		    SID			    "2765"
 		    Ports		    [2, 1]
 		    Position		    [240, 340, 260, 380]
 		    ZOrder		    12
@@ -1721,7 +1659,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod7"
-		    SID			    "1692"
+		    SID			    "2766"
 		    Ports		    [2, 1]
 		    Position		    [240, 400, 260, 440]
 		    ZOrder		    14
@@ -1732,7 +1670,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod8"
-		    SID			    "1693"
+		    SID			    "2767"
 		    Ports		    [2, 1]
 		    Position		    [240, 460, 260, 500]
 		    ZOrder		    16
@@ -1743,7 +1681,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod9"
-		    SID			    "1694"
+		    SID			    "2768"
 		    Ports		    [2, 1]
 		    Position		    [240, 520, 260, 560]
 		    ZOrder		    18
@@ -1754,7 +1692,7 @@ Model {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "iz{1,1}"
-		    SID			    "1695"
+		    SID			    "2769"
 		    Position		    [420, 630, 440, 650]
 		    ZOrder		    43
 		    IconDisplay		    "Port number"
@@ -2103,13 +2041,13 @@ Model {
 		Block {
 		  BlockType		  Constant
 		  Name			  "b{1}"
-		  SID			  "1696"
+		  SID			  "2770"
 		  Position		  [180, 100, 220, 140]
 		  ZOrder		  7
-		  Value			  "[-1.7097525568436764;3.7310993265721555;2.8605705821054737;1.1676580235798284;-1.8872543638189601;-0.29"
-		  "02864400005683;2.2143297769824635;0.69901542572131781;0.02863864359062189;-0.46985948224908436;-0.1543916478290750"
-		  "2;1.4637532883681135;0.24733308933320153;-0.32028155495711463;-3.4684499020473254;-1.989749998170582;2.63133148871"
-		  "21959;-2.8675865154852582;-2.599409451854763;-4.6222345127866928]"
+		  Value			  "[2.7484276585611811;-3.2016260768766158;2.3997468855703583;3.2399248117566675;2.1763271598944129;1.7140"
+		  "182104769308;-1.2383976610457077;0.15045519870425419;0.017457136430912006;-0.54170873050835022;0.14452365928643468"
+		  ";0.86947853790906426;-0.013041756157497478;1.7301564341946156;-1.4622859882176571;0.49276043112943235;1.6370443107"
+		  "289163;-0.99883019062621303;-2.8556185405486292;2.7282201735427871]"
 		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
 		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
 		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('b');"
@@ -2122,7 +2060,7 @@ Model {
 		Block {
 		  BlockType		  Sum
 		  Name			  "netsum"
-		  SID			  "1697"
+		  SID			  "2771"
 		  Ports			  [2, 1]
 		  Position		  [260, 70, 300, 110]
 		  ZOrder		  3
@@ -2139,7 +2077,7 @@ Model {
 		Block {
 		  BlockType		  Reference
 		  Name			  "tansig"
-		  SID			  "1698"
+		  SID			  "2772"
 		  Ports			  [1, 1]
 		  Position		  [340, 70, 380, 110]
 		  ZOrder		  2
@@ -2150,7 +2088,7 @@ Model {
 		Block {
 		  BlockType		  Outport
 		  Name			  "a{1}"
-		  SID			  "1699"
+		  SID			  "2773"
 		  Position		  [420, 70, 460, 110]
 		  ZOrder		  1
 		  IconDisplay		  "Port number"
@@ -2205,7 +2143,7 @@ Model {
 	    Block {
 	      BlockType		      SubSystem
 	      Name		      "Layer 2"
-	      SID		      "1700"
+	      SID		      "2774"
 	      Ports		      [1, 1]
 	      Position		      [190, 80, 250, 100]
 	      ZOrder		      8
@@ -2242,7 +2180,7 @@ Model {
 		Block {
 		  BlockType		  Inport
 		  Name			  "a{1} "
-		  SID			  "1701"
+		  SID			  "2775"
 		  Position		  [20, 20, 60, 60]
 		  ZOrder		  4
 		  IconDisplay		  "Port number"
@@ -2260,7 +2198,7 @@ Model {
 		Block {
 		  BlockType		  SubSystem
 		  Name			  "Delays 1"
-		  SID			  "1702"
+		  SID			  "2776"
 		  Ports			  [1, 1]
 		  Position		  [100, 40, 140, 80]
 		  ZOrder		  5
@@ -2297,7 +2235,7 @@ Model {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "p{2}"
-		    SID			    "1703"
+		    SID			    "2777"
 		    Position		    [60, 40, 80, 60]
 		    ZOrder		    1
 		    BlockRotation	    270
@@ -2318,7 +2256,7 @@ Model {
 		    Block {
 		    BlockType		    Mux
 		    Name		    "mux"
-		    SID			    "1704"
+		    SID			    "2778"
 		    Ports		    [1, 1]
 		    Position		    [200, 60, 240, 80]
 		    ZOrder		    2
@@ -2335,7 +2273,7 @@ Model {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "pd{2,1}"
-		    SID			    "1705"
+		    SID			    "2779"
 		    Position		    [300, 60, 320, 80]
 		    ZOrder		    3
 		    IconDisplay		    "Port number"
@@ -2365,7 +2303,7 @@ Model {
 		Block {
 		  BlockType		  SubSystem
 		  Name			  "LW{2,1}"
-		  SID			  "1706"
+		  SID			  "2780"
 		  Ports			  [1, 1]
 		  Position		  [180, 40, 220, 80]
 		  ZOrder		  6
@@ -2402,7 +2340,7 @@ Model {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "ad{2,1}"
-		    SID			    "1707"
+		    SID			    "2781"
 		    Position		    [40, 60, 60, 80]
 		    ZOrder		    1
 		    IconDisplay		    "Port number"
@@ -2420,13 +2358,13 @@ Model {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "IW{2,1}(1,:)'"
-		    SID			    "1708"
+		    SID			    "2782"
 		    Position		    [140, 40, 180, 60]
 		    ZOrder		    3
-		    Value		    "[0.33459502827965193;-0.10384831343651106;0.01502879543299984;-0.028398865174760625;0.01801235428290"
-		    "5201;3.2774353622041716;0.096380115584217774;-0.026261853080957253;1.4755408537762185;0.021044549238287157;0.009"
-		    "9697657892974974;0.016062881604736713;0.26890389832163986;0.086338901027551873;0.020577154523078799;-0.010404191"
-		    "906998022;-0.090612297486869886;-1.515194607134779;-0.23075204341825437;0.2121213275772513]"
+		    Value		    "[0.4352989057438203;0.59130361275416743;0.019078936189183052;0.078520204393970103;0.0650630747511731"
+		    "5;-0.19895002254814051;0.29440785280772164;0.33336036921998508;-1.1952833797215869;0.0065792051032608021;-0.3075"
+		    "4008824647983;0.016101932560967085;-2.351517633324542;-0.01256212919280016;0.28568778032775061;-0.01863188018258"
+		    "5835;0.19101096590042835;-0.017629880766815341;0.20302684110973132;0.19004471229617378]"
 		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
 		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
 		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('weights');"
@@ -2439,7 +2377,7 @@ Model {
 		    Block {
 		    BlockType		    Mux
 		    Name		    "Mux"
-		    SID			    "1709"
+		    SID			    "2783"
 		    Ports		    [1, 1]
 		    Position		    [340, 60, 380, 80]
 		    ZOrder		    4
@@ -2456,7 +2394,7 @@ Model {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "dotprod1"
-		    SID			    "1710"
+		    SID			    "2784"
 		    Ports		    [2, 1]
 		    Position		    [240, 40, 260, 80]
 		    ZOrder		    2
@@ -2467,7 +2405,7 @@ Model {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "lz{2,1}"
-		    SID			    "1711"
+		    SID			    "2785"
 		    Position		    [420, 60, 440, 80]
 		    ZOrder		    5
 		    IconDisplay		    "Port number"
@@ -2509,10 +2447,10 @@ Model {
 		Block {
 		  BlockType		  Constant
 		  Name			  "b{2}"
-		  SID			  "1712"
+		  SID			  "2786"
 		  Position		  [180, 100, 220, 140]
 		  ZOrder		  7
-		  Value			  "-0.2259517604944028"
+		  Value			  "0.49858217478161682"
 		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
 		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
 		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('b');"
@@ -2525,7 +2463,7 @@ Model {
 		Block {
 		  BlockType		  Sum
 		  Name			  "netsum"
-		  SID			  "1713"
+		  SID			  "2787"
 		  Ports			  [2, 1]
 		  Position		  [260, 70, 300, 110]
 		  ZOrder		  3
@@ -2542,7 +2480,7 @@ Model {
 		Block {
 		  BlockType		  Reference
 		  Name			  "purelin"
-		  SID			  "1714"
+		  SID			  "2788"
 		  Ports			  [1, 1]
 		  Position		  [340, 70, 380, 110]
 		  ZOrder		  2
@@ -2553,7 +2491,7 @@ Model {
 		Block {
 		  BlockType		  Outport
 		  Name			  "a{2}"
-		  SID			  "1715"
+		  SID			  "2789"
 		  Position		  [420, 70, 460, 110]
 		  ZOrder		  1
 		  IconDisplay		  "Port number"
@@ -2608,7 +2546,7 @@ Model {
 	    Block {
 	      BlockType		      SubSystem
 	      Name		      "Process Input 1"
-	      SID		      "1716"
+	      SID		      "2790"
 	      Ports		      [1, 1]
 	      Position		      [100, 40, 120, 60]
 	      ZOrder		      2
@@ -2645,7 +2583,7 @@ Model {
 		Block {
 		  BlockType		  Inport
 		  Name			  "x"
-		  SID			  "1717"
+		  SID			  "2791"
 		  Position		  [20, 30, 60, 70]
 		  ZOrder		  1
 		  IconDisplay		  "Port number"
@@ -2662,27 +2600,41 @@ Model {
 		}
 		Block {
 		  BlockType		  Reference
-		  Name			  "mapminmax"
-		  SID			  "1718"
+		  Name			  "fixunknowns"
+		  SID			  "2792"
 		  Ports			  [1, 1]
-		  Position		  [220, 30, 260, 70]
-		  ZOrder		  3
+		  Position		  [120, 30, 160, 70]
+		  ZOrder		  2
+		  BackgroundColor	  "lightBlue"
+		  LibraryVersion	  "1.77"
+		  SourceBlock		  "neural/Processing Functions/fixunknowns"
+		  SourceType		  "FIXUNKNOWNS Preprocess"
+		  inputSize		  "4"
+		  indices		  "[1 2 3 4]"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "mapminmax"
+		  SID			  "2793"
+		  Ports			  [1, 1]
+		  Position		  [320, 30, 360, 70]
+		  ZOrder		  4
 		  BackgroundColor	  "lightBlue"
 		  LibraryVersion	  "1.77"
 		  SourceBlock		  "neural/Processing Functions/mapminmax"
 		  SourceType		  "MAPMINMAX Preprocess"
-		  xmin			  "[-0.99609375;-0.99609375;-1;-1]"
-		  xmax			  "[0.646484375;0.646484375;1;1]"
+		  xmin			  "[0;0;0;0]"
+		  xmax			  "[1;1;1;1]"
 		  ymin			  "-1"
 		  ymax			  "1"
 		}
 		Block {
 		  BlockType		  Reference
 		  Name			  "removeconstantrows"
-		  SID			  "1719"
+		  SID			  "2794"
 		  Ports			  [1, 1]
-		  Position		  [120, 30, 160, 70]
-		  ZOrder		  2
+		  Position		  [220, 30, 260, 70]
+		  ZOrder		  3
 		  BackgroundColor	  "lightBlue"
 		  LibraryVersion	  "1.77"
 		  SourceBlock		  "neural/Processing Functions/removeconstantrows"
@@ -2693,9 +2645,9 @@ Model {
 		Block {
 		  BlockType		  Outport
 		  Name			  "p"
-		  SID			  "1720"
-		  Position		  [320, 30, 360, 70]
-		  ZOrder		  4
+		  SID			  "2795"
+		  Position		  [420, 30, 460, 70]
+		  ZOrder		  5
 		  IconDisplay		  "Port number"
 		  PortDimensions	  "4"
 		  SampleTime		  "0.25"
@@ -2710,6 +2662,12 @@ Model {
 		}
 		Line {
 		  SrcBlock		  "x"
+		  SrcPort		  1
+		  DstBlock		  "fixunknowns"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "fixunknowns"
 		  SrcPort		  1
 		  DstBlock		  "removeconstantrows"
 		  DstPort		  1
@@ -2731,7 +2689,7 @@ Model {
 	    Block {
 	      BlockType		      SubSystem
 	      Name		      "Process Output 1"
-	      SID		      "1721"
+	      SID		      "2796"
 	      Ports		      [1, 1]
 	      Position		      [320, 120, 340, 140]
 	      ZOrder		      4
@@ -2768,7 +2726,7 @@ Model {
 		Block {
 		  BlockType		  Inport
 		  Name			  "a"
-		  SID			  "1722"
+		  SID			  "2797"
 		  Position		  [20, 30, 60, 70]
 		  ZOrder		  1
 		  IconDisplay		  "Port number"
@@ -2786,7 +2744,7 @@ Model {
 		Block {
 		  BlockType		  Reference
 		  Name			  "mapminmax_reverse"
-		  SID			  "1723"
+		  SID			  "2798"
 		  Ports			  [1, 1]
 		  Position		  [120, 30, 160, 70]
 		  ZOrder		  2
@@ -2794,15 +2752,15 @@ Model {
 		  LibraryVersion	  "1.77"
 		  SourceBlock		  "neural/Processing Functions/mapminmax_reverse"
 		  SourceType		  "MAPMINMAX Reverse Process"
-		  xmin			  "-0.99609375"
-		  xmax			  "0.646484375"
+		  xmin			  "0"
+		  xmax			  "1"
 		  ymin			  "-1"
 		  ymax			  "1"
 		}
 		Block {
 		  BlockType		  Reference
 		  Name			  "removeconstantrows_reverse"
-		  SID			  "1724"
+		  SID			  "2799"
 		  Ports			  [1, 1]
 		  Position		  [220, 30, 260, 70]
 		  ZOrder		  3
@@ -2817,7 +2775,7 @@ Model {
 		Block {
 		  BlockType		  Outport
 		  Name			  "y"
-		  SID			  "1725"
+		  SID			  "2800"
 		  Position		  [320, 30, 360, 70]
 		  ZOrder		  4
 		  IconDisplay		  "Port number"
@@ -2855,7 +2813,7 @@ Model {
 	    Block {
 	      BlockType		      Goto
 	      Name		      "a{1}"
-	      SID		      "1726"
+	      SID		      "2801"
 	      Position		      [380, 40, 400, 60]
 	      ZOrder		      6
 	      GotoTag		      "feedback1"
@@ -2869,7 +2827,7 @@ Model {
 	    Block {
 	      BlockType		      Outport
 	      Name		      "Output"
-	      SID		      "1727"
+	      SID		      "2802"
 	      Position		      [380, 120, 400, 140]
 	      ZOrder		      3
 	      IconDisplay	      "Port number"
@@ -2922,10 +2880,69 @@ Model {
 	  }
 	}
 	Block {
+	  BlockType		  Mux
+	  Name			  "Mux1"
+	  SID			  "1728"
+	  Ports			  [4, 1]
+	  Position		  [390, 17, 395, 253]
+	  ZOrder		  -16
+	  ShowName		  off
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation"
+	  SID			  "1060"
+	  Ports			  [1, 1]
+	  Position		  [70, 150, 100, 180]
+	  ZOrder		  -15
+	  InputPortMap		  "u0"
+	  UpperLimit		  "1"
+	  LowerLimit		  "0"
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation1"
+	  SID			  "1732"
+	  Ports			  [1, 1]
+	  Position		  [635, 120, 665, 150]
+	  ZOrder		  -15
+	  InputPortMap		  "u0"
+	  UpperLimit		  "1"
+	  LowerLimit		  "0"
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay1"
+	  SID			  "1730"
+	  Position		  [180, 28, 215, 62]
+	  ZOrder		  -21
+	  InputProcessing	  "Elements as channels (sample based)"
+	  SampleTime		  "0.25"
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay2"
+	  SID			  "1731"
+	  Position		  [315, 208, 350, 242]
+	  ZOrder		  -21
+	  InputProcessing	  "Elements as channels (sample based)"
+	  SampleTime		  "0.25"
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay3"
+	  SID			  "1857"
+	  Position		  [315, 88, 350, 122]
+	  ZOrder		  -21
+	  InputProcessing	  "Elements as channels (sample based)"
+	  SampleTime		  "0.25"
+	}
+	Block {
 	  BlockType		  Outport
 	  Name			  " y Speed"
 	  SID			  "1061"
-	  Position		  [620, 128, 650, 142]
+	  Position		  [705, 128, 735, 142]
 	  IconDisplay		  "Port number"
 	}
 	Line {
@@ -2935,7 +2952,7 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "optim DNM"
+	  SrcBlock		  "Custom Neural Network"
 	  SrcPort		  1
 	  DstBlock		  "Saturation1"
 	  DstPort		  1
@@ -2943,7 +2960,7 @@ Model {
 	Line {
 	  SrcBlock		  "Mux1"
 	  SrcPort		  1
-	  DstBlock		  "optim DNM"
+	  DstBlock		  "Custom Neural Network"
 	  DstPort		  1
 	}
 	Line {
@@ -2961,7 +2978,7 @@ Model {
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, -125; -400, 0]
+	    Points		    [0, -125; -515, 0]
 	    DstBlock		    "Unit Delay1"
 	    DstPort		    1
 	  }
@@ -2969,7 +2986,7 @@ Model {
 	Line {
 	  SrcBlock		  "Unit Delay1"
 	  SrcPort		  1
-	  Points		  [20, 0]
+	  Points		  [50, 0]
 	  Branch {
 	    DstBlock		    "Mux1"
 	    DstPort		    1
@@ -3023,7 +3040,7 @@ Model {
 	Annotation {
 	  SID			  "2715"
 	  Name			  "y k+1"
-	  Position		  [529, 103]
+	  Position		  [614, 103]
 	}
       }
     }
@@ -3187,7 +3204,7 @@ Model {
       Position		      [720, 224, 750, 256]
       ZOrder		      -3
       Floating		      off
-      Location		      [5, 48, 1371, 737]
+      Location		      [5, 48, 1367, 737]
       Open		      off
       NumInputPorts	      "1"
       ZoomMode		      "xonly"
@@ -3243,8 +3260,8 @@ Model {
       SID		      "2636"
       Position		      [30, 224, 60, 256]
       ZOrder		      -23
-      Maximum		      "0.7"
-      Seed		      "8"
+      Minimum		      "0"
+      Seed		      "9"
       SampleTime	      "25"
     }
     Block {
@@ -3253,7 +3270,6 @@ Model {
       SID		      "2716"
       Position		      [290, 223, 325, 257]
       ZOrder		      -21
-      X0		      "-1"
       InputProcessing	      "Elements as channels (sample based)"
       SampleTime	      "0.25"
     }
