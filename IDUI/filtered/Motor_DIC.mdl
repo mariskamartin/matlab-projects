@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.258"
+    ComputedModelVersion    "1.264"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -28,9 +28,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "MAR"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Jun 11 22:11:53 2013"
-  RTWModifiedTimeStamp	  292889460
-  ModelVersionFormat	  "1.%<AutoIncrement:258>"
+  LastModifiedDate	  "Wed Jun 12 08:18:33 2013"
+  RTWModifiedTimeStamp	  292925707
+  ModelVersionFormat	  "1.%<AutoIncrement:264>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -788,7 +788,7 @@ Model {
   }
   System {
     Name		    "Motor_DIC"
-    Location		    [159, 178, 1179, 701]
+    Location		    [140, 110, 1160, 633]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -802,7 +802,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "7981"
+    SIDHighWatermark	    "8074"
     Block {
       BlockType		      SubSystem
       Name		      "DC Motor1"
@@ -20698,11 +20698,11 @@ Model {
       BlockType		      Mux
       Name		      "Mux1"
       SID		      "139"
-      Ports		      [2, 1]
+      Ports		      [3, 1]
       Position		      [635, 152, 640, 328]
       ZOrder		      -16
       ShowName		      off
-      Inputs		      "2"
+      Inputs		      "3"
       DisplayOption	      "bar"
     }
     Block {
@@ -20753,15 +20753,15 @@ Model {
     }
     Block {
       BlockType		      Reference
-      Name		      "Testovaci sekvence"
-      SID		      "42"
+      Name		      "Testovaci sekv. Norm"
+      SID		      "8074"
       Ports		      [0, 1]
       Position		      [40, 210, 70, 240]
       ZOrder		      -18
       LibraryVersion	      "1.260"
       SourceBlock	      "simulink/Sources/Repeating\nSequence\nStair"
       SourceType	      "Repeating Sequence Stair"
-      OutValues		      "[ .75 -.5 .25 .25 .25 .25 0 -1].'"
+      OutValues		      "[.4 -.6 0 0 0 0 -0.5 -1].'"
       tsamp		      "15"
       OutMin		      "[]"
       OutMax		      "[]"
@@ -20776,7 +20776,7 @@ Model {
       BlockType		      UniformRandomNumber
       Name		      "Uniform Random\nNumber"
       SID		      "2636"
-      Position		      [40, 114, 70, 146]
+      Position		      [40, 79, 70, 111]
       ZOrder		      -23
       Maximum		      "0.6"
       Seed		      "7"
@@ -20787,12 +20787,33 @@ Model {
       Name		      "porucha"
       SID		      "7981"
       Ports		      [0, 1]
-      Position		      [505, 270, 535, 300]
+      Position		      [505, 260, 535, 290]
       ZOrder		      -18
       LibraryVersion	      "1.260"
       SourceBlock	      "simulink/Sources/Repeating\nSequence\nStair"
       SourceType	      "Repeating Sequence Stair"
-      OutValues		      "[0 0 0 0 0 .6 0 0 0 0].'"
+      OutValues		      "[0 0 0 0 .6 0 0 0].'"
+      tsamp		      "15"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "double"
+      OutputDataTypeScalingMode	"double"
+      OutDataType	      "fixdt(0,8)"
+      ConRadixGroup	      "Best Precision: Vector-wise"
+      OutScaling	      "2^-12"
+      LockScale		      off
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "sekvence"
+      SID		      "7982"
+      Ports		      [0, 1]
+      Position		      [40, 270, 70, 300]
+      ZOrder		      -18
+      LibraryVersion	      "1.260"
+      SourceBlock	      "simulink/Sources/Repeating\nSequence\nStair"
+      SourceType	      "Repeating Sequence Stair"
+      OutValues		      "[-.23 .378  .75 -.5 .25 .25 .25 .25 0 -1].'"
       tsamp		      "15"
       OutMin		      "[]"
       OutMax		      "[]"
@@ -20816,16 +20837,16 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Testovaci sekvence"
+      SrcBlock		      "Testovaci sekv. Norm"
       SrcPort		      1
       Points		      [180, 0]
       Branch {
-	DstBlock		"INN Regulator I.4 data2"
+	Points			[0, -45]
+	DstBlock		"Mux1"
 	DstPort			1
       }
       Branch {
-	Points			[0, -30]
-	DstBlock		"Mux1"
+	DstBlock		"INN Regulator I.4 data2"
 	DstPort			1
       }
     }
@@ -20840,7 +20861,6 @@ Model {
       SrcPort		      1
       Points		      [20, 0]
       Branch {
-	Points			[35, 0]
 	DstBlock		"Mux1"
 	DstPort			2
       }
