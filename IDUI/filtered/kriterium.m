@@ -1,8 +1,8 @@
 function Kr = kriterium(net)
-    T = 0:1.5:500;
-    bin = cidlo(T);
-    Tnn = sim(net,bin);
-    Kr = log10((T-Tnn)*(T-Tnn)'/length(T)) + 0.1 * pocetNeuronu(net);
+    realTeplota = 0:1.5:500;
+    bin = cidlo(realTeplota);
+    TeplotaNn = sim(net,bin);
+    Kr = log10((realTeplota-TeplotaNn)*(realTeplota-TeplotaNn)'/length(realTeplota)) + 0.1 * pocetNeuronu(net);
 end
 
 function n = pocetNeuronu(net)
