@@ -8,7 +8,12 @@
 %   targets - target data.
 
 % Create a Fitting Network
-hiddenLayerSize = 15;
+if (exist('topology','var'))
+    hiddenLayerSize = topology;
+else
+    hiddenLayerSize = 15;
+end
+clear net;
 net = fitnet(hiddenLayerSize);
 
 
