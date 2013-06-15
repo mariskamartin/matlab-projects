@@ -7,8 +7,8 @@
 inputs = inputs;
 targets = targets;
 startTime = now();
-topologyPatterns = {5; 8; 10; [4 4]; [5 5]}; % 15; 20; [8 8]; [5 5]  [11 15 18 20 25]; %[11 15 18 20 22 25 29];
-replications = 5;
+topologyPatterns = {5; 8; 10; 13; 15; [4 3];[5 5]; [7 7]}; % 15; 20; [8 8]; [5 5]  [11 15 18 20 25]; %[11 15 18 20 22 25 29];
+replications = 10;
 maxTrainTimeInSec = 1*60;
 count = 1; 
 optimizedTopology = cell(replications*length(topologyPatterns),1);

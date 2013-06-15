@@ -43,3 +43,5 @@ performance = perform(net,targets,outputs)
 % figure, plotfit(net,inputs,targets)
 figure, plotregression(targets,outputs)
 figure, ploterrhist(errors)
+
+c = Criteria(net, inputs, targets); c.getValue()

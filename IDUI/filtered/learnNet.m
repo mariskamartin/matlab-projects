@@ -16,3 +16,4 @@ net.trainParam.max_fail = 100;
 
 % Train the Network
 [net, trainResults] = train(net, inputs, targets);
+

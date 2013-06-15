@@ -1,6 +1,7 @@
 clc;
 
-scaleSampleIndexes = 1:3:length(data.signals.values);
+part = length(data.signals.values) / 8;
+scaleSampleIndexes = fix(part*4):3:part*5;
 % scaleSampleIndexes = 1:1:length(data.signals.values);
 sampleTime = 0.75; %of second
 

@@ -20,14 +20,14 @@ classdef Criteria < handle
             %simulate
             nnY = sim(this.net, in);
             %calculate
-            value = log10((realY-nnY)*(realY-nnY)'/length(realY)) + 0.1 * this.countPocetNeuronu(this.net);
+            value = Criteria.countCriterium((realY-nnY)*(realY-nnY)'/length(realY) , this.countPocetNeuronu(this.net));
 
             % debug information
 %             disp(['log10 z ' num2str((realY-nnY)*(realY-nnY)'/length(realY))]);
             plot(realY); hold on; plot(nnY, 'r'); hold off;
         end
     end
-    methods (Static, Access = private)
+    methods (Static)
         %% zjisti pocet neuronu podle matice biasu
         function n = countPocetNeuronu(net)
             biasArr = net.b;
@@ -36,6 +36,10 @@ classdef Criteria < handle
                 [r, s] = size(biasArr{k});
                 n = n + r * s;
             end
+        end
+        %% spocita kriterium na zaklade vstupnich parametru
+        function value = countCriterium(sum, num)
+            value = log10(sum) + 0.01 * num;
         end
     end
     
