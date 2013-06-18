@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.306"
+    ComputedModelVersion    "1.319"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -21,16 +21,16 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  InitFcn		  "sampleTime = 0.75;"
+  InitFcn		  "sampleTime = 0.75;\ninitSystemCondition = -1;"
   Created		  "Sat Sep 18 13:29:19 2010"
   Creator		  "maen"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "MAR"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Jun 15 11:25:11 2013"
-  RTWModifiedTimeStamp	  293196300
-  ModelVersionFormat	  "1.%<AutoIncrement:306>"
+  LastModifiedDate	  "Mon Jun 17 18:52:17 2013"
+  RTWModifiedTimeStamp	  293395879
+  ModelVersionFormat	  "1.%<AutoIncrement:319>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -114,7 +114,7 @@ Model {
 	  $ObjectID		  2
 	  Version		  "1.12.0"
 	  StartTime		  "0.0"
-	  StopTime		  "200"
+	  StopTime		  "120"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -769,6 +769,16 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      ToWorkspace
+      VariableName	      "simulink_output"
+      MaxDataPoints	      "1000"
+      Decimation	      "1"
+      SampleTime	      "0"
+      SaveFormat	      "Array"
+      FixptAsFi		      off
+      NumInputs		      "1"
+    }
+    Block {
       BlockType		      UnitDelay
       X0		      "0"
       InputProcessing	      "Inherited"
@@ -794,13 +804,13 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "8680"
+    SIDHighWatermark	    "8826"
     Block {
       BlockType		      SubSystem
-      Name		      "INN Regulator I.4 data3"
+      Name		      "Inverzní Model"
       SID		      "8220"
       Ports		      [2, 1]
-      Position		      [265, 209, 330, 271]
+      Position		      [115, 384, 180, 446]
       ZOrder		      -1
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -810,8 +820,8 @@ Model {
       RequestExecContextInheritance off
       MaskHideContents	      off
       System {
-	Name			"INN Regulator I.4 data3"
-	Location		[178, 145, 902, 671]
+	Name			"Inverzní Model"
+	Location		[178, 145, 1108, 671]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -828,7 +838,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "w/y(k+1)"
 	  SID			  "8221"
-	  Position		  [15, 88, 45, 102]
+	  Position		  [125, 88, 155, 102]
 	  ZOrder		  -1
 	  IconDisplay		  "Port number"
 	}
@@ -836,7 +846,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "ys (k)"
 	  SID			  "8222"
-	  Position		  [15, 203, 45, 217]
+	  Position		  [125, 203, 155, 217]
 	  ZOrder		  -2
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -2652,7 +2662,7 @@ Model {
 	  Name			  "Saturation"
 	  SID			  "8299"
 	  Ports			  [1, 1]
-	  Position		  [95, 195, 125, 225]
+	  Position		  [190, 195, 220, 225]
 	  ZOrder		  -15
 	  InputPortMap		  "u0"
 	  UpperLimit		  "1"
@@ -2663,7 +2673,7 @@ Model {
 	  Name			  "Saturation1"
 	  SID			  "8300"
 	  Ports			  [1, 1]
-	  Position		  [485, 140, 515, 170]
+	  Position		  [510, 140, 540, 170]
 	  ZOrder		  -15
 	  InputPortMap		  "u0"
 	  UpperLimit		  "1"
@@ -2679,37 +2689,6 @@ Model {
 	  InputPortMap		  "u0"
 	  UpperLimit		  "1"
 	  LowerLimit		  "-1"
-	}
-	Block {
-	  BlockType		  Scope
-	  Name			  "Scope"
-	  SID			  "8302"
-	  Ports			  [1]
-	  Position		  [565, 39, 595, 71]
-	  ZOrder		  -3
-	  Floating		  off
-	  Location		  [5, 48, 1371, 737]
-	  Open			  off
-	  NumInputPorts		  "1"
-	  ZoomMode		  "xonly"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  List {
-	    ListType		    ScopeGraphics
-	    FigureColor		    "[0.5 0.5 0.5]"
-	    AxesColor		    "[0 0 0]"
-	    AxesTickColor	    "[1 1 1]"
-	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	    LineStyles		    "-|-|-|-|-|-"
-	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
-	    MarkerStyles	    "none|none|none|none|none|none"
-	  }
-	  ShowLegends		  off
-	  SaveName		  "ScopeData2"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
 	}
 	Block {
 	  BlockType		  Outport
@@ -2734,16 +2713,8 @@ Model {
 	Line {
 	  SrcBlock		  "Function Fitting Neural Network"
 	  SrcPort		  1
-	  Points		  [10, 0]
-	  Branch {
-	    DstBlock		    "Saturation1"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, -100]
-	    DstBlock		    "Scope"
-	    DstPort		    1
-	  }
+	  DstBlock		  "Saturation1"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Mux"
@@ -2771,16 +2742,3314 @@ Model {
 	}
 	Annotation {
 	  SID			  "8306"
-	  Name			  "k+1"
+	  Name			  "y k+1"
 	  Position		  [255, 73]
 	}
 	Annotation {
 	  SID			  "8305"
-	  Name			  "k"
+	  Name			  "y k"
 	  Position		  [260, 186]
 	}
 	Annotation {
 	  SID			  "8304"
+	  Name			  "u k"
+	  Position		  [480, 135]
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Iverz. Model"
+      SID		      "8681"
+      Ports		      [2, 1]
+      Position		      [130, 34, 195, 96]
+      ZOrder		      -2
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"Iverz. Model"
+	Location		[132, 86, 1225, 743]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"A4"
+	PaperUnits		"centimeters"
+	TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "w (k+1)"
+	  SID			  "8682"
+	  Position		  [15, 88, 45, 102]
+	  ZOrder		  -1
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "ys (k)"
+	  SID			  "8683"
+	  Position		  [15, 203, 45, 217]
+	  ZOrder		  -2
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Function Fitting Neural Network"
+	  SID			  "8684"
+	  Ports			  [1, 1]
+	  Position		  [315, 85, 455, 225]
+	  ZOrder		  3
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  MaskDescription	  "Function Fitting Neural Network"
+	  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1 "
+	  "1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e],"
+	  "c3);plot([0 1 1 0 0],[0 0 1 1 0]);fprintf('NNET');port_label('input',1,' Input');port_label('output',1,'Output ');"
+	  MaskIconFrame		  off
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskPortRotate	  "default"
+	  MaskIconUnits		  "autoscale"
+	  System {
+	    Name		    "Function Fitting Neural Network"
+	    Location		    [484, 93, 1020, 382]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "A4"
+	    PaperUnits		    "centimeters"
+	    TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Input"
+	      SID		      "8685"
+	      Position		      [40, 40, 60, 60]
+	      ZOrder		      1
+	      IconDisplay	      "Port number"
+	      PortDimensions	      "2"
+	      SampleTime	      "0.75"
+	      MaskDisplay	      "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(2"
+	      "56+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+"
+	      "e],[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      " a{1} "
+	      SID		      "8686"
+	      Position		      [40, 120, 60, 140]
+	      ZOrder		      5
+	      GotoTag		      "feedback1"
+	      MaskDisplay	      "plot(cos(0:.1:2*pi),sin(0:.1:2*pi))"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "Layer 1"
+	      SID		      "8687"
+	      Ports		      [1, 1]
+	      Position		      [190, 40, 250, 60]
+	      ZOrder		      7
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      MaskDisplay	      "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patc"
+	      "h([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-"
+	      "e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	      System {
+		Name			"Layer 1"
+		Location		[484, 93, 1020, 382]
+		Open			off
+		ModelBrowserVisibility	off
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"A4"
+		PaperUnits		"centimeters"
+		TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Inport
+		  Name			  "p{1}"
+		  SID			  "8688"
+		  Position		  [20, 40, 60, 80]
+		  ZOrder		  4
+		  IconDisplay		  "Port number"
+		  PortDimensions	  "2"
+		  SampleTime		  "0.75"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  SubSystem
+		  Name			  "Delays 1"
+		  SID			  "8689"
+		  Ports			  [1, 1]
+		  Position		  [100, 40, 140, 80]
+		  ZOrder		  5
+		  MinAlgLoopOccurrences	  off
+		  PropExecContextOutsideSubsystem off
+		  RTWSystemCode		  "Auto"
+		  FunctionWithSeparateData off
+		  Opaque		  off
+		  RequestExecContextInheritance	off
+		  MaskHideContents	  off
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('0');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		  System {
+		    Name		    "Delays 1"
+		    Location		    [484, 93, 1020, 382]
+		    Open		    off
+		    ModelBrowserVisibility  off
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "A4"
+		    PaperUnits		    "centimeters"
+		    TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "p{1}"
+		    SID			    "8690"
+		    Position		    [60, 40, 80, 60]
+		    ZOrder		    1
+		    BlockRotation	    270
+		    BlockMirror		    on
+		    NamePlacement	    "alternate"
+		    IconDisplay		    "Port number"
+		    PortDimensions	    "2"
+		    SampleTime		    "0.75"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Mux
+		    Name		    "mux"
+		    SID			    "8691"
+		    Ports		    [1, 1]
+		    Position		    [200, 60, 240, 80]
+		    ZOrder		    2
+		    Inputs		    "1"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Mux')"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "pd{1,1}"
+		    SID			    "8692"
+		    Position		    [300, 60, 320, 80]
+		    ZOrder		    3
+		    IconDisplay		    "Port number"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Line {
+		    SrcBlock		    "mux"
+		    SrcPort		    1
+		    DstBlock		    "pd{1,1}"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "p{1}"
+		    SrcPort		    1
+		    DstBlock		    "mux"
+		    DstPort		    1
+		    }
+		  }
+		}
+		Block {
+		  BlockType		  SubSystem
+		  Name			  "IW{1,1}"
+		  SID			  "8693"
+		  Ports			  [1, 1]
+		  Position		  [180, 40, 220, 80]
+		  ZOrder		  6
+		  MinAlgLoopOccurrences	  off
+		  PropExecContextOutsideSubsystem off
+		  RTWSystemCode		  "Auto"
+		  FunctionWithSeparateData off
+		  Opaque		  off
+		  RequestExecContextInheritance	off
+		  MaskHideContents	  off
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('W');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		  System {
+		    Name		    "IW{1,1}"
+		    Location		    [484, 93, 1020, 382]
+		    Open		    off
+		    ModelBrowserVisibility  off
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "A4"
+		    PaperUnits		    "centimeters"
+		    TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "pd{1,1}"
+		    SID			    "8694"
+		    Position		    [40, 270, 60, 290]
+		    ZOrder		    1
+		    IconDisplay		    "Port number"
+		    PortDimensions	    "2"
+		    SampleTime		    "0.75"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(1,:)'"
+		    SID			    "8695"
+		    Position		    [140, 40, 180, 60]
+		    ZOrder		    3
+		    Value		    "[-7.1594361386583696;6.8106530887319607]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(2,:)'"
+		    SID			    "8696"
+		    Position		    [140, 100, 180, 120]
+		    ZOrder		    5
+		    Value		    "[-1.0591942517687896;-4.3821187555411134]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(3,:)'"
+		    SID			    "8697"
+		    Position		    [140, 160, 180, 180]
+		    ZOrder		    7
+		    Value		    "[-0.48259446317502075;3.578699406498056]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(4,:)'"
+		    SID			    "8698"
+		    Position		    [140, 220, 180, 240]
+		    ZOrder		    9
+		    Value		    "[2.1006571200765829;-6.4654476157820957]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(5,:)'"
+		    SID			    "8699"
+		    Position		    [140, 280, 180, 300]
+		    ZOrder		    11
+		    Value		    "[3.2121304556809425;-1.2518498717880002]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(6,:)'"
+		    SID			    "8700"
+		    Position		    [140, 340, 180, 360]
+		    ZOrder		    13
+		    Value		    "[-0.93944369344802425;2.9512239673912819]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(7,:)'"
+		    SID			    "8701"
+		    Position		    [140, 400, 180, 420]
+		    ZOrder		    15
+		    Value		    "[8.9640007146064473;-8.429906189728877]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(8,:)'"
+		    SID			    "8702"
+		    Position		    [140, 460, 180, 480]
+		    ZOrder		    17
+		    Value		    "[6.1437472372945434;4.3329313001637138]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Mux
+		    Name		    "Mux"
+		    SID			    "8703"
+		    Ports		    [8, 1]
+		    Position		    [340, 265, 380, 300]
+		    ZOrder		    18
+		    Inputs		    "8"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Mux');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod1"
+		    SID			    "8704"
+		    Ports		    [2, 1]
+		    Position		    [240, 40, 260, 80]
+		    ZOrder		    2
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod2"
+		    SID			    "8705"
+		    Ports		    [2, 1]
+		    Position		    [240, 100, 260, 140]
+		    ZOrder		    4
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod3"
+		    SID			    "8706"
+		    Ports		    [2, 1]
+		    Position		    [240, 160, 260, 200]
+		    ZOrder		    6
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod4"
+		    SID			    "8707"
+		    Ports		    [2, 1]
+		    Position		    [240, 220, 260, 260]
+		    ZOrder		    8
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod5"
+		    SID			    "8708"
+		    Ports		    [2, 1]
+		    Position		    [240, 280, 260, 320]
+		    ZOrder		    10
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod6"
+		    SID			    "8709"
+		    Ports		    [2, 1]
+		    Position		    [240, 340, 260, 380]
+		    ZOrder		    12
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod7"
+		    SID			    "8710"
+		    Ports		    [2, 1]
+		    Position		    [240, 400, 260, 440]
+		    ZOrder		    14
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod8"
+		    SID			    "8711"
+		    Ports		    [2, 1]
+		    Position		    [240, 460, 260, 500]
+		    ZOrder		    16
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "iz{1,1}"
+		    SID			    "8712"
+		    Position		    [420, 270, 440, 290]
+		    ZOrder		    19
+		    IconDisplay		    "Port number"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Line {
+		    SrcBlock		    "Mux"
+		    SrcPort		    1
+		    DstBlock		    "iz{1,1}"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod8"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    8
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(8,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod8"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod7"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    7
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(7,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod7"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod6"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    6
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(6,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod6"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod5"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    5
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(5,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod5"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod4"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    4
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(4,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod4"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod3"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    3
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(3,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod3"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod2"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(2,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod2"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod1"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "pd{1,1}"
+		    SrcPort		    1
+		    Points		    [0, 0]
+		    Branch {
+		    DstBlock		    "dotprod8"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "dotprod7"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "dotprod6"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "dotprod5"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "dotprod4"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "dotprod3"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "dotprod2"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "dotprod1"
+		    DstPort		    2
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(1,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod1"
+		    DstPort		    1
+		    }
+		  }
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "b{1}"
+		  SID			  "8713"
+		  Position		  [180, 100, 220, 140]
+		  ZOrder		  7
+		  Value			  "[1.9861221520914467;3.1323291418585502;3.3278808664719888;-3.9741572024571346;-1.3136608423561364;1.591"
+		  "4518263803865;2.0971899302320081;11.306264732778017]"
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('b');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  Sum
+		  Name			  "netsum"
+		  SID			  "8714"
+		  Ports			  [2, 1]
+		  Position		  [260, 70, 300, 110]
+		  ZOrder		  3
+		  Inputs		  "2"
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('+');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "tansig"
+		  SID			  "8715"
+		  Ports			  [1, 1]
+		  Position		  [340, 70, 380, 110]
+		  ZOrder		  2
+		  LibraryVersion	  "1.77"
+		  SourceBlock		  "neural/Transfer Functions/tansig"
+		  SourceType		  "TANSIG"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "a{1}"
+		  SID			  "8716"
+		  Position		  [420, 70, 460, 110]
+		  ZOrder		  1
+		  IconDisplay		  "Port number"
+		  InitialOutput		  "[0;0;0;0;0;0;0;0]"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Line {
+		  SrcBlock		  "tansig"
+		  SrcPort		  1
+		  DstBlock		  "a{1}"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "netsum"
+		  SrcPort		  1
+		  DstBlock		  "tansig"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "b{1}"
+		  SrcPort		  1
+		  DstBlock		  "netsum"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "IW{1,1}"
+		  SrcPort		  1
+		  DstBlock		  "netsum"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Delays 1"
+		  SrcPort		  1
+		  DstBlock		  "IW{1,1}"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "p{1}"
+		  SrcPort		  1
+		  DstBlock		  "Delays 1"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "Layer 2"
+	      SID		      "8717"
+	      Ports		      [1, 1]
+	      Position		      [190, 80, 250, 100]
+	      ZOrder		      8
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      MaskDisplay	      "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patc"
+	      "h([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-"
+	      "e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	      System {
+		Name			"Layer 2"
+		Location		[484, 93, 1020, 382]
+		Open			off
+		ModelBrowserVisibility	off
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"A4"
+		PaperUnits		"centimeters"
+		TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Inport
+		  Name			  "a{1} "
+		  SID			  "8718"
+		  Position		  [20, 20, 60, 60]
+		  ZOrder		  4
+		  IconDisplay		  "Port number"
+		  PortDimensions	  "8"
+		  SampleTime		  "0.75"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  SubSystem
+		  Name			  "Delays 1"
+		  SID			  "8719"
+		  Ports			  [1, 1]
+		  Position		  [100, 40, 140, 80]
+		  ZOrder		  5
+		  MinAlgLoopOccurrences	  off
+		  PropExecContextOutsideSubsystem off
+		  RTWSystemCode		  "Auto"
+		  FunctionWithSeparateData off
+		  Opaque		  off
+		  RequestExecContextInheritance	off
+		  MaskHideContents	  off
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('0');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		  System {
+		    Name		    "Delays 1"
+		    Location		    [484, 93, 1020, 382]
+		    Open		    off
+		    ModelBrowserVisibility  off
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "A4"
+		    PaperUnits		    "centimeters"
+		    TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "p{2}"
+		    SID			    "8720"
+		    Position		    [60, 40, 80, 60]
+		    ZOrder		    1
+		    BlockRotation	    270
+		    BlockMirror		    on
+		    NamePlacement	    "alternate"
+		    IconDisplay		    "Port number"
+		    PortDimensions	    "8"
+		    SampleTime		    "0.75"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Mux
+		    Name		    "mux"
+		    SID			    "8721"
+		    Ports		    [1, 1]
+		    Position		    [200, 60, 240, 80]
+		    ZOrder		    2
+		    Inputs		    "1"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Mux')"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "pd{2,1}"
+		    SID			    "8722"
+		    Position		    [300, 60, 320, 80]
+		    ZOrder		    3
+		    IconDisplay		    "Port number"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Line {
+		    SrcBlock		    "mux"
+		    SrcPort		    1
+		    DstBlock		    "pd{2,1}"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "p{2}"
+		    SrcPort		    1
+		    DstBlock		    "mux"
+		    DstPort		    1
+		    }
+		  }
+		}
+		Block {
+		  BlockType		  SubSystem
+		  Name			  "LW{2,1}"
+		  SID			  "8723"
+		  Ports			  [1, 1]
+		  Position		  [180, 40, 220, 80]
+		  ZOrder		  6
+		  MinAlgLoopOccurrences	  off
+		  PropExecContextOutsideSubsystem off
+		  RTWSystemCode		  "Auto"
+		  FunctionWithSeparateData off
+		  Opaque		  off
+		  RequestExecContextInheritance	off
+		  MaskHideContents	  off
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('W');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		  System {
+		    Name		    "LW{2,1}"
+		    Location		    [484, 93, 1020, 382]
+		    Open		    off
+		    ModelBrowserVisibility  off
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "A4"
+		    PaperUnits		    "centimeters"
+		    TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "ad{2,1}"
+		    SID			    "8724"
+		    Position		    [40, 60, 60, 80]
+		    ZOrder		    1
+		    IconDisplay		    "Port number"
+		    PortDimensions	    "8"
+		    SampleTime		    "0.75"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{2,1}(1,:)'"
+		    SID			    "8725"
+		    Position		    [140, 40, 180, 60]
+		    ZOrder		    3
+		    Value		    "[-2.7866620747371349;0.071591537225458191;-9.6018814824202572;-3.5445970737012646;0.6256569543979203"
+		    "5;1.4020972396020017;3.6860125593317412;4.1520333127606808]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Mux
+		    Name		    "Mux"
+		    SID			    "8726"
+		    Ports		    [1, 1]
+		    Position		    [340, 60, 380, 80]
+		    ZOrder		    4
+		    Inputs		    "1"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Mux');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod1"
+		    SID			    "8727"
+		    Ports		    [2, 1]
+		    Position		    [240, 40, 260, 80]
+		    ZOrder		    2
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "lz{2,1}"
+		    SID			    "8728"
+		    Position		    [420, 60, 440, 80]
+		    ZOrder		    5
+		    IconDisplay		    "Port number"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Line {
+		    SrcBlock		    "Mux"
+		    SrcPort		    1
+		    DstBlock		    "lz{2,1}"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod1"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "ad{2,1}"
+		    SrcPort		    1
+		    DstBlock		    "dotprod1"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "IW{2,1}(1,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod1"
+		    DstPort		    1
+		    }
+		  }
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "b{2}"
+		  SID			  "8729"
+		  Position		  [180, 100, 220, 140]
+		  ZOrder		  7
+		  Value			  "0.1471680886192599"
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('b');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  Sum
+		  Name			  "netsum"
+		  SID			  "8730"
+		  Ports			  [2, 1]
+		  Position		  [260, 70, 300, 110]
+		  ZOrder		  3
+		  Inputs		  "2"
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('+');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "purelin"
+		  SID			  "8731"
+		  Ports			  [1, 1]
+		  Position		  [340, 70, 380, 110]
+		  ZOrder		  2
+		  LibraryVersion	  "1.77"
+		  SourceBlock		  "neural/Transfer Functions/purelin"
+		  SourceType		  "PURELIN"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "a{2}"
+		  SID			  "8732"
+		  Position		  [420, 70, 460, 110]
+		  ZOrder		  1
+		  IconDisplay		  "Port number"
+		  InitialOutput		  "0"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Line {
+		  SrcBlock		  "purelin"
+		  SrcPort		  1
+		  DstBlock		  "a{2}"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "netsum"
+		  SrcPort		  1
+		  DstBlock		  "purelin"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "b{2}"
+		  SrcPort		  1
+		  DstBlock		  "netsum"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "LW{2,1}"
+		  SrcPort		  1
+		  DstBlock		  "netsum"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Delays 1"
+		  SrcPort		  1
+		  DstBlock		  "LW{2,1}"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "a{1} "
+		  SrcPort		  1
+		  DstBlock		  "Delays 1"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "Process Input 1"
+	      SID		      "8733"
+	      Ports		      [1, 1]
+	      Position		      [100, 40, 120, 60]
+	      ZOrder		      2
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      MaskDisplay	      "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patc"
+	      "h([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-"
+	      "e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	      System {
+		Name			"Process Input 1"
+		Location		[484, 93, 1020, 382]
+		Open			off
+		ModelBrowserVisibility	off
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"A4"
+		PaperUnits		"centimeters"
+		TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Inport
+		  Name			  "x"
+		  SID			  "8734"
+		  Position		  [20, 30, 60, 70]
+		  ZOrder		  1
+		  IconDisplay		  "Port number"
+		  PortDimensions	  "2"
+		  SampleTime		  "0.75"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "mapminmax"
+		  SID			  "8735"
+		  Ports			  [1, 1]
+		  Position		  [220, 30, 260, 70]
+		  ZOrder		  3
+		  BackgroundColor	  "lightBlue"
+		  LibraryVersion	  "1.77"
+		  SourceBlock		  "neural/Processing Functions/mapminmax"
+		  SourceType		  "MAPMINMAX Preprocess"
+		  xmin			  "[-0.99609375;-0.99609375]"
+		  xmax			  "[0.6259765625;0.6259765625]"
+		  ymin			  "-1"
+		  ymax			  "1"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "removeconstantrows"
+		  SID			  "8736"
+		  Ports			  [1, 1]
+		  Position		  [120, 30, 160, 70]
+		  ZOrder		  2
+		  BackgroundColor	  "lightBlue"
+		  LibraryVersion	  "1.77"
+		  SourceBlock		  "neural/Processing Functions/removeconstantrows"
+		  SourceType		  "REMOVECONSTANTROWS Process"
+		  inputSize		  "2"
+		  keep			  "[1 2]"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "p"
+		  SID			  "8737"
+		  Position		  [320, 30, 360, 70]
+		  ZOrder		  4
+		  IconDisplay		  "Port number"
+		  PortDimensions	  "2"
+		  SampleTime		  "0.75"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Line {
+		  SrcBlock		  "mapminmax"
+		  SrcPort		  1
+		  DstBlock		  "p"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "removeconstantrows"
+		  SrcPort		  1
+		  DstBlock		  "mapminmax"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "x"
+		  SrcPort		  1
+		  DstBlock		  "removeconstantrows"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "Process Output 1"
+	      SID		      "8738"
+	      Ports		      [1, 1]
+	      Position		      [320, 120, 340, 140]
+	      ZOrder		      4
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      MaskDisplay	      "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patc"
+	      "h([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-"
+	      "e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	      System {
+		Name			"Process Output 1"
+		Location		[484, 93, 1020, 382]
+		Open			off
+		ModelBrowserVisibility	off
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"A4"
+		PaperUnits		"centimeters"
+		TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Inport
+		  Name			  "a"
+		  SID			  "8739"
+		  Position		  [20, 30, 60, 70]
+		  ZOrder		  1
+		  IconDisplay		  "Port number"
+		  PortDimensions	  "1"
+		  SampleTime		  "0.75"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "mapminmax_reverse"
+		  SID			  "8740"
+		  Ports			  [1, 1]
+		  Position		  [120, 30, 160, 70]
+		  ZOrder		  2
+		  BackgroundColor	  "lightBlue"
+		  LibraryVersion	  "1.77"
+		  SourceBlock		  "neural/Processing Functions/mapminmax_reverse"
+		  SourceType		  "MAPMINMAX Reverse Process"
+		  xmin			  "-0.85175781250000016"
+		  xmax			  "1"
+		  ymin			  "-1"
+		  ymax			  "1"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "removeconstantrows_reverse"
+		  SID			  "8741"
+		  Ports			  [1, 1]
+		  Position		  [220, 30, 260, 70]
+		  ZOrder		  3
+		  BackgroundColor	  "lightBlue"
+		  LibraryVersion	  "1.77"
+		  SourceBlock		  "neural/Processing Functions/removeconstantrows_reverse"
+		  SourceType		  "REMOVECONSTANTROWS Reverse Process"
+		  inputSize		  "1"
+		  constants		  "zeros(0,1)"
+		  rearrange		  "1"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "y"
+		  SID			  "8742"
+		  Position		  [320, 30, 360, 70]
+		  ZOrder		  4
+		  IconDisplay		  "Port number"
+		  PortDimensions	  "1"
+		  SampleTime		  "0.75"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Line {
+		  SrcBlock		  "removeconstantrows_reverse"
+		  SrcPort		  1
+		  DstBlock		  "y"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "mapminmax_reverse"
+		  SrcPort		  1
+		  DstBlock		  "removeconstantrows_reverse"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "a"
+		  SrcPort		  1
+		  DstBlock		  "mapminmax_reverse"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      Goto
+	      Name		      "a{1}"
+	      SID		      "8743"
+	      Position		      [380, 40, 400, 60]
+	      ZOrder		      6
+	      GotoTag		      "feedback1"
+	      MaskDisplay	      "plot(cos(0:.1:2*pi),sin(0:.1:2*pi))"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Output"
+	      SID		      "8744"
+	      Position		      [380, 120, 400, 140]
+	      ZOrder		      3
+	      IconDisplay	      "Port number"
+	      InitialOutput	      "0"
+	      MaskDisplay	      "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(2"
+	      "56+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+"
+	      "e],[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Line {
+	      SrcBlock		      "Layer 2"
+	      SrcPort		      1
+	      DstBlock		      "Process Output 1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " a{1} "
+	      SrcPort		      1
+	      DstBlock		      "Layer 2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Layer 1"
+	      SrcPort		      1
+	      DstBlock		      "a{1}"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Process Input 1"
+	      SrcPort		      1
+	      DstBlock		      "Layer 1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Process Output 1"
+	      SrcPort		      1
+	      DstBlock		      "Output"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Input"
+	      SrcPort		      1
+	      DstBlock		      "Process Input 1"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux"
+	  SID			  "8745"
+	  Ports			  [2, 1]
+	  Position		  [280, 37, 285, 268]
+	  ZOrder		  -16
+	  ShowName		  off
+	  Inputs		  "2"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation"
+	  SID			  "8746"
+	  Ports			  [1, 1]
+	  Position		  [135, 195, 165, 225]
+	  ZOrder		  -15
+	  InputPortMap		  "u0"
+	  UpperLimit		  "1"
+	  LowerLimit		  "-1"
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation1"
+	  SID			  "8747"
+	  Ports			  [1, 1]
+	  Position		  [485, 140, 515, 170]
+	  ZOrder		  -15
+	  InputPortMap		  "u0"
+	  UpperLimit		  "1"
+	  LowerLimit		  "-1"
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation2"
+	  SID			  "8748"
+	  Ports			  [1, 1]
+	  Position		  [135, 80, 165, 110]
+	  ZOrder		  -15
+	  InputPortMap		  "u0"
+	  UpperLimit		  "1"
+	  LowerLimit		  "-1"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "u (k)"
+	  SID			  "8749"
+	  Position		  [570, 148, 600, 162]
+	  ZOrder		  -20
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Saturation"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Saturation2"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Saturation1"
+	  SrcPort		  1
+	  DstBlock		  "u (k)"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Mux"
+	  SrcPort		  1
+	  DstBlock		  "Function Fitting Neural Network"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Function Fitting Neural Network"
+	  SrcPort		  1
+	  DstBlock		  "Saturation1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "ys (k)"
+	  SrcPort		  1
+	  DstBlock		  "Saturation"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "w (k+1)"
+	  SrcPort		  1
+	  DstBlock		  "Saturation2"
+	  DstPort		  1
+	}
+	Annotation {
+	  SID			  "8752"
+	  Name			  "u k"
+	  Position		  [525, 200]
+	}
+	Annotation {
+	  SID			  "8751"
+	  Name			  "k"
+	  Position		  [260, 186]
+	}
+	Annotation {
+	  SID			  "8750"
+	  Name			  "k+1"
+	  Position		  [255, 73]
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Iverz. Model1"
+      SID		      "8753"
+      Ports		      [2, 1]
+      Position		      [310, 209, 375, 271]
+      ZOrder		      -2
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"Iverz. Model1"
+	Location		[132, 86, 1225, 743]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"A4"
+	PaperUnits		"centimeters"
+	TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "w (k+1)"
+	  SID			  "8754"
+	  Position		  [15, 88, 45, 102]
+	  ZOrder		  -1
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "ys (k)"
+	  SID			  "8755"
+	  Position		  [15, 203, 45, 217]
+	  ZOrder		  -2
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Function Fitting Neural Network"
+	  SID			  "8756"
+	  Ports			  [1, 1]
+	  Position		  [315, 85, 455, 225]
+	  ZOrder		  3
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  MaskDescription	  "Function Fitting Neural Network"
+	  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1 "
+	  "1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e],"
+	  "c3);plot([0 1 1 0 0],[0 0 1 1 0]);fprintf('NNET');port_label('input',1,' Input');port_label('output',1,'Output ');"
+	  MaskIconFrame		  off
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskPortRotate	  "default"
+	  MaskIconUnits		  "autoscale"
+	  System {
+	    Name		    "Function Fitting Neural Network"
+	    Location		    [484, 93, 1020, 382]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "A4"
+	    PaperUnits		    "centimeters"
+	    TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Input"
+	      SID		      "8757"
+	      Position		      [40, 40, 60, 60]
+	      ZOrder		      1
+	      IconDisplay	      "Port number"
+	      PortDimensions	      "2"
+	      SampleTime	      "0.75"
+	      MaskDisplay	      "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(2"
+	      "56+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+"
+	      "e],[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      " a{1} "
+	      SID		      "8758"
+	      Position		      [40, 120, 60, 140]
+	      ZOrder		      5
+	      GotoTag		      "feedback1"
+	      MaskDisplay	      "plot(cos(0:.1:2*pi),sin(0:.1:2*pi))"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "Layer 1"
+	      SID		      "8759"
+	      Ports		      [1, 1]
+	      Position		      [190, 40, 250, 60]
+	      ZOrder		      7
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      MaskDisplay	      "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patc"
+	      "h([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-"
+	      "e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	      System {
+		Name			"Layer 1"
+		Location		[484, 93, 1020, 382]
+		Open			off
+		ModelBrowserVisibility	off
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"A4"
+		PaperUnits		"centimeters"
+		TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Inport
+		  Name			  "p{1}"
+		  SID			  "8760"
+		  Position		  [20, 40, 60, 80]
+		  ZOrder		  4
+		  IconDisplay		  "Port number"
+		  PortDimensions	  "2"
+		  SampleTime		  "0.75"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  SubSystem
+		  Name			  "Delays 1"
+		  SID			  "8761"
+		  Ports			  [1, 1]
+		  Position		  [100, 40, 140, 80]
+		  ZOrder		  5
+		  MinAlgLoopOccurrences	  off
+		  PropExecContextOutsideSubsystem off
+		  RTWSystemCode		  "Auto"
+		  FunctionWithSeparateData off
+		  Opaque		  off
+		  RequestExecContextInheritance	off
+		  MaskHideContents	  off
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('0');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		  System {
+		    Name		    "Delays 1"
+		    Location		    [484, 93, 1020, 382]
+		    Open		    off
+		    ModelBrowserVisibility  off
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "A4"
+		    PaperUnits		    "centimeters"
+		    TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "p{1}"
+		    SID			    "8762"
+		    Position		    [60, 40, 80, 60]
+		    ZOrder		    1
+		    BlockRotation	    270
+		    BlockMirror		    on
+		    NamePlacement	    "alternate"
+		    IconDisplay		    "Port number"
+		    PortDimensions	    "2"
+		    SampleTime		    "0.75"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Mux
+		    Name		    "mux"
+		    SID			    "8763"
+		    Ports		    [1, 1]
+		    Position		    [200, 60, 240, 80]
+		    ZOrder		    2
+		    Inputs		    "1"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Mux')"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "pd{1,1}"
+		    SID			    "8764"
+		    Position		    [300, 60, 320, 80]
+		    ZOrder		    3
+		    IconDisplay		    "Port number"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Line {
+		    SrcBlock		    "p{1}"
+		    SrcPort		    1
+		    DstBlock		    "mux"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "mux"
+		    SrcPort		    1
+		    DstBlock		    "pd{1,1}"
+		    DstPort		    1
+		    }
+		  }
+		}
+		Block {
+		  BlockType		  SubSystem
+		  Name			  "IW{1,1}"
+		  SID			  "8765"
+		  Ports			  [1, 1]
+		  Position		  [180, 40, 220, 80]
+		  ZOrder		  6
+		  MinAlgLoopOccurrences	  off
+		  PropExecContextOutsideSubsystem off
+		  RTWSystemCode		  "Auto"
+		  FunctionWithSeparateData off
+		  Opaque		  off
+		  RequestExecContextInheritance	off
+		  MaskHideContents	  off
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('W');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		  System {
+		    Name		    "IW{1,1}"
+		    Location		    [484, 93, 1020, 382]
+		    Open		    off
+		    ModelBrowserVisibility  off
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "A4"
+		    PaperUnits		    "centimeters"
+		    TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "pd{1,1}"
+		    SID			    "8766"
+		    Position		    [40, 270, 60, 290]
+		    ZOrder		    1
+		    IconDisplay		    "Port number"
+		    PortDimensions	    "2"
+		    SampleTime		    "0.75"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(1,:)'"
+		    SID			    "8767"
+		    Position		    [140, 40, 180, 60]
+		    ZOrder		    3
+		    Value		    "[-7.1594361386583696;6.8106530887319607]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(2,:)'"
+		    SID			    "8768"
+		    Position		    [140, 100, 180, 120]
+		    ZOrder		    5
+		    Value		    "[-1.0591942517687896;-4.3821187555411134]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(3,:)'"
+		    SID			    "8769"
+		    Position		    [140, 160, 180, 180]
+		    ZOrder		    7
+		    Value		    "[-0.48259446317502075;3.578699406498056]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(4,:)'"
+		    SID			    "8770"
+		    Position		    [140, 220, 180, 240]
+		    ZOrder		    9
+		    Value		    "[2.1006571200765829;-6.4654476157820957]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(5,:)'"
+		    SID			    "8771"
+		    Position		    [140, 280, 180, 300]
+		    ZOrder		    11
+		    Value		    "[3.2121304556809425;-1.2518498717880002]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(6,:)'"
+		    SID			    "8772"
+		    Position		    [140, 340, 180, 360]
+		    ZOrder		    13
+		    Value		    "[-0.93944369344802425;2.9512239673912819]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(7,:)'"
+		    SID			    "8773"
+		    Position		    [140, 400, 180, 420]
+		    ZOrder		    15
+		    Value		    "[8.9640007146064473;-8.429906189728877]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{1,1}(8,:)'"
+		    SID			    "8774"
+		    Position		    [140, 460, 180, 480]
+		    ZOrder		    17
+		    Value		    "[6.1437472372945434;4.3329313001637138]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Mux
+		    Name		    "Mux"
+		    SID			    "8775"
+		    Ports		    [8, 1]
+		    Position		    [340, 265, 380, 300]
+		    ZOrder		    18
+		    Inputs		    "8"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Mux');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod1"
+		    SID			    "8776"
+		    Ports		    [2, 1]
+		    Position		    [240, 40, 260, 80]
+		    ZOrder		    2
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod2"
+		    SID			    "8777"
+		    Ports		    [2, 1]
+		    Position		    [240, 100, 260, 140]
+		    ZOrder		    4
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod3"
+		    SID			    "8778"
+		    Ports		    [2, 1]
+		    Position		    [240, 160, 260, 200]
+		    ZOrder		    6
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod4"
+		    SID			    "8779"
+		    Ports		    [2, 1]
+		    Position		    [240, 220, 260, 260]
+		    ZOrder		    8
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod5"
+		    SID			    "8780"
+		    Ports		    [2, 1]
+		    Position		    [240, 280, 260, 320]
+		    ZOrder		    10
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod6"
+		    SID			    "8781"
+		    Ports		    [2, 1]
+		    Position		    [240, 340, 260, 380]
+		    ZOrder		    12
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod7"
+		    SID			    "8782"
+		    Ports		    [2, 1]
+		    Position		    [240, 400, 260, 440]
+		    ZOrder		    14
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod8"
+		    SID			    "8783"
+		    Ports		    [2, 1]
+		    Position		    [240, 460, 260, 500]
+		    ZOrder		    16
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "iz{1,1}"
+		    SID			    "8784"
+		    Position		    [420, 270, 440, 290]
+		    ZOrder		    19
+		    IconDisplay		    "Port number"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(1,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod1"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "pd{1,1}"
+		    SrcPort		    1
+		    Points		    [0, 0]
+		    Branch {
+		    DstBlock		    "dotprod1"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "dotprod2"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "dotprod3"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "dotprod4"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "dotprod5"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "dotprod6"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "dotprod7"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "dotprod8"
+		    DstPort		    2
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "dotprod1"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(2,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod2"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod2"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(3,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod3"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod3"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    3
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(4,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod4"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod4"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    4
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(5,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod5"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod5"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    5
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(6,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod6"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod6"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    6
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(7,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod7"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod7"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    7
+		    }
+		    Line {
+		    SrcBlock		    "IW{1,1}(8,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod8"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "dotprod8"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    8
+		    }
+		    Line {
+		    SrcBlock		    "Mux"
+		    SrcPort		    1
+		    DstBlock		    "iz{1,1}"
+		    DstPort		    1
+		    }
+		  }
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "b{1}"
+		  SID			  "8785"
+		  Position		  [180, 100, 220, 140]
+		  ZOrder		  7
+		  Value			  "[1.9861221520914467;3.1323291418585502;3.3278808664719888;-3.9741572024571346;-1.3136608423561364;1.591"
+		  "4518263803865;2.0971899302320081;11.306264732778017]"
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('b');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  Sum
+		  Name			  "netsum"
+		  SID			  "8786"
+		  Ports			  [2, 1]
+		  Position		  [260, 70, 300, 110]
+		  ZOrder		  3
+		  Inputs		  "2"
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('+');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "tansig"
+		  SID			  "8787"
+		  Ports			  [1, 1]
+		  Position		  [340, 70, 380, 110]
+		  ZOrder		  2
+		  LibraryVersion	  "1.77"
+		  SourceBlock		  "neural/Transfer Functions/tansig"
+		  SourceType		  "TANSIG"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "a{1}"
+		  SID			  "8788"
+		  Position		  [420, 70, 460, 110]
+		  ZOrder		  1
+		  IconDisplay		  "Port number"
+		  InitialOutput		  "[0;0;0;0;0;0;0;0]"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Line {
+		  SrcBlock		  "p{1}"
+		  SrcPort		  1
+		  DstBlock		  "Delays 1"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Delays 1"
+		  SrcPort		  1
+		  DstBlock		  "IW{1,1}"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "IW{1,1}"
+		  SrcPort		  1
+		  DstBlock		  "netsum"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "b{1}"
+		  SrcPort		  1
+		  DstBlock		  "netsum"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "netsum"
+		  SrcPort		  1
+		  DstBlock		  "tansig"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "tansig"
+		  SrcPort		  1
+		  DstBlock		  "a{1}"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "Layer 2"
+	      SID		      "8789"
+	      Ports		      [1, 1]
+	      Position		      [190, 80, 250, 100]
+	      ZOrder		      8
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      MaskDisplay	      "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patc"
+	      "h([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-"
+	      "e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	      System {
+		Name			"Layer 2"
+		Location		[484, 93, 1020, 382]
+		Open			off
+		ModelBrowserVisibility	off
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"A4"
+		PaperUnits		"centimeters"
+		TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Inport
+		  Name			  "a{1} "
+		  SID			  "8790"
+		  Position		  [20, 20, 60, 60]
+		  ZOrder		  4
+		  IconDisplay		  "Port number"
+		  PortDimensions	  "8"
+		  SampleTime		  "0.75"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  SubSystem
+		  Name			  "Delays 1"
+		  SID			  "8791"
+		  Ports			  [1, 1]
+		  Position		  [100, 40, 140, 80]
+		  ZOrder		  5
+		  MinAlgLoopOccurrences	  off
+		  PropExecContextOutsideSubsystem off
+		  RTWSystemCode		  "Auto"
+		  FunctionWithSeparateData off
+		  Opaque		  off
+		  RequestExecContextInheritance	off
+		  MaskHideContents	  off
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('0');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		  System {
+		    Name		    "Delays 1"
+		    Location		    [484, 93, 1020, 382]
+		    Open		    off
+		    ModelBrowserVisibility  off
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "A4"
+		    PaperUnits		    "centimeters"
+		    TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "p{2}"
+		    SID			    "8792"
+		    Position		    [60, 40, 80, 60]
+		    ZOrder		    1
+		    BlockRotation	    270
+		    BlockMirror		    on
+		    NamePlacement	    "alternate"
+		    IconDisplay		    "Port number"
+		    PortDimensions	    "8"
+		    SampleTime		    "0.75"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Mux
+		    Name		    "mux"
+		    SID			    "8793"
+		    Ports		    [1, 1]
+		    Position		    [200, 60, 240, 80]
+		    ZOrder		    2
+		    Inputs		    "1"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Mux')"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "pd{2,1}"
+		    SID			    "8794"
+		    Position		    [300, 60, 320, 80]
+		    ZOrder		    3
+		    IconDisplay		    "Port number"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Line {
+		    SrcBlock		    "p{2}"
+		    SrcPort		    1
+		    DstBlock		    "mux"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "mux"
+		    SrcPort		    1
+		    DstBlock		    "pd{2,1}"
+		    DstPort		    1
+		    }
+		  }
+		}
+		Block {
+		  BlockType		  SubSystem
+		  Name			  "LW{2,1}"
+		  SID			  "8795"
+		  Ports			  [1, 1]
+		  Position		  [180, 40, 220, 80]
+		  ZOrder		  6
+		  MinAlgLoopOccurrences	  off
+		  PropExecContextOutsideSubsystem off
+		  RTWSystemCode		  "Auto"
+		  FunctionWithSeparateData off
+		  Opaque		  off
+		  RequestExecContextInheritance	off
+		  MaskHideContents	  off
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('W');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		  System {
+		    Name		    "LW{2,1}"
+		    Location		    [484, 93, 1020, 382]
+		    Open		    off
+		    ModelBrowserVisibility  off
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "A4"
+		    PaperUnits		    "centimeters"
+		    TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "ad{2,1}"
+		    SID			    "8796"
+		    Position		    [40, 60, 60, 80]
+		    ZOrder		    1
+		    IconDisplay		    "Port number"
+		    PortDimensions	    "8"
+		    SampleTime		    "0.75"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "IW{2,1}(1,:)'"
+		    SID			    "8797"
+		    Position		    [140, 40, 180, 60]
+		    ZOrder		    3
+		    Value		    "[-2.7866620747371349;0.071591537225458191;-9.6018814824202572;-3.5445970737012646;0.6256569543979203"
+		    "5;1.4020972396020017;3.6860125593317412;4.1520333127606808]"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('weights');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Mux
+		    Name		    "Mux"
+		    SID			    "8798"
+		    Ports		    [1, 1]
+		    Position		    [340, 60, 380, 80]
+		    ZOrder		    4
+		    Inputs		    "1"
+		    MaskDisplay		    "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch("
+		    "[0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1"
+		    "-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('Mux');"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "dotprod1"
+		    SID			    "8799"
+		    Ports		    [2, 1]
+		    Position		    [240, 40, 260, 80]
+		    ZOrder		    2
+		    LibraryVersion	    "1.77"
+		    SourceBlock		    "neural/Weight Functions/dotprod"
+		    SourceType		    "DOTPROD"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "lz{2,1}"
+		    SID			    "8800"
+		    Position		    [420, 60, 440, 80]
+		    ZOrder		    5
+		    IconDisplay		    "Port number"
+		    MaskDisplay		    "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256"
+		    "+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],"
+		    "[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		    MaskIconFrame	    off
+		    MaskIconOpaque	    on
+		    MaskIconRotate	    "none"
+		    MaskPortRotate	    "default"
+		    MaskIconUnits	    "autoscale"
+		    }
+		    Line {
+		    SrcBlock		    "IW{2,1}(1,:)'"
+		    SrcPort		    1
+		    DstBlock		    "dotprod1"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "ad{2,1}"
+		    SrcPort		    1
+		    DstBlock		    "dotprod1"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "dotprod1"
+		    SrcPort		    1
+		    DstBlock		    "Mux"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Mux"
+		    SrcPort		    1
+		    DstBlock		    "lz{2,1}"
+		    DstPort		    1
+		    }
+		  }
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "b{2}"
+		  SID			  "8801"
+		  Position		  [180, 100, 220, 140]
+		  ZOrder		  7
+		  Value			  "0.1471680886192599"
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('b');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  Sum
+		  Name			  "netsum"
+		  SID			  "8802"
+		  Ports			  [2, 1]
+		  Position		  [260, 70, 300, 110]
+		  ZOrder		  3
+		  Inputs		  "2"
+		  MaskDisplay		  "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patch([0 1"
+		  " 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-e 1-e 0+e"
+		  "],c3);plot([0 1 1 0 0],[0 0 1 1 0]);disp('+');"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "purelin"
+		  SID			  "8803"
+		  Ports			  [1, 1]
+		  Position		  [340, 70, 380, 110]
+		  ZOrder		  2
+		  LibraryVersion	  "1.77"
+		  SourceBlock		  "neural/Transfer Functions/purelin"
+		  SourceType		  "PURELIN"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "a{2}"
+		  SID			  "8804"
+		  Position		  [420, 70, 460, 110]
+		  ZOrder		  1
+		  IconDisplay		  "Port number"
+		  InitialOutput		  "0"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Line {
+		  SrcBlock		  "a{1} "
+		  SrcPort		  1
+		  DstBlock		  "Delays 1"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Delays 1"
+		  SrcPort		  1
+		  DstBlock		  "LW{2,1}"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "LW{2,1}"
+		  SrcPort		  1
+		  DstBlock		  "netsum"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "b{2}"
+		  SrcPort		  1
+		  DstBlock		  "netsum"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "netsum"
+		  SrcPort		  1
+		  DstBlock		  "purelin"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "purelin"
+		  SrcPort		  1
+		  DstBlock		  "a{2}"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "Process Input 1"
+	      SID		      "8805"
+	      Ports		      [1, 1]
+	      Position		      [100, 40, 120, 60]
+	      ZOrder		      2
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      MaskDisplay	      "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patc"
+	      "h([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-"
+	      "e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	      System {
+		Name			"Process Input 1"
+		Location		[484, 93, 1020, 382]
+		Open			off
+		ModelBrowserVisibility	off
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"A4"
+		PaperUnits		"centimeters"
+		TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Inport
+		  Name			  "x"
+		  SID			  "8806"
+		  Position		  [20, 30, 60, 70]
+		  ZOrder		  1
+		  IconDisplay		  "Port number"
+		  PortDimensions	  "2"
+		  SampleTime		  "0.75"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "mapminmax"
+		  SID			  "8807"
+		  Ports			  [1, 1]
+		  Position		  [220, 30, 260, 70]
+		  ZOrder		  3
+		  BackgroundColor	  "lightBlue"
+		  LibraryVersion	  "1.77"
+		  SourceBlock		  "neural/Processing Functions/mapminmax"
+		  SourceType		  "MAPMINMAX Preprocess"
+		  xmin			  "[-0.99609375;-0.99609375]"
+		  xmax			  "[0.6259765625;0.6259765625]"
+		  ymin			  "-1"
+		  ymax			  "1"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "removeconstantrows"
+		  SID			  "8808"
+		  Ports			  [1, 1]
+		  Position		  [120, 30, 160, 70]
+		  ZOrder		  2
+		  BackgroundColor	  "lightBlue"
+		  LibraryVersion	  "1.77"
+		  SourceBlock		  "neural/Processing Functions/removeconstantrows"
+		  SourceType		  "REMOVECONSTANTROWS Process"
+		  inputSize		  "2"
+		  keep			  "[1 2]"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "p"
+		  SID			  "8809"
+		  Position		  [320, 30, 360, 70]
+		  ZOrder		  4
+		  IconDisplay		  "Port number"
+		  PortDimensions	  "2"
+		  SampleTime		  "0.75"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Line {
+		  SrcBlock		  "x"
+		  SrcPort		  1
+		  DstBlock		  "removeconstantrows"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "removeconstantrows"
+		  SrcPort		  1
+		  DstBlock		  "mapminmax"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "mapminmax"
+		  SrcPort		  1
+		  DstBlock		  "p"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "Process Output 1"
+	      SID		      "8810"
+	      Ports		      [1, 1]
+	      Position		      [320, 120, 340, 140]
+	      ZOrder		      4
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      MaskDisplay	      "e = 0.06;c1 = [120 150 230]/255;c2 = ([120 150 230]+0)/383;c3 = ([120 150 230]+128)/383;patc"
+	      "h([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1 1-"
+	      "e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	      System {
+		Name			"Process Output 1"
+		Location		[484, 93, 1020, 382]
+		Open			off
+		ModelBrowserVisibility	off
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"A4"
+		PaperUnits		"centimeters"
+		TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Inport
+		  Name			  "a"
+		  SID			  "8811"
+		  Position		  [20, 30, 60, 70]
+		  ZOrder		  1
+		  IconDisplay		  "Port number"
+		  PortDimensions	  "1"
+		  SampleTime		  "0.75"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "mapminmax_reverse"
+		  SID			  "8812"
+		  Ports			  [1, 1]
+		  Position		  [120, 30, 160, 70]
+		  ZOrder		  2
+		  BackgroundColor	  "lightBlue"
+		  LibraryVersion	  "1.77"
+		  SourceBlock		  "neural/Processing Functions/mapminmax_reverse"
+		  SourceType		  "MAPMINMAX Reverse Process"
+		  xmin			  "-0.85175781250000016"
+		  xmax			  "1"
+		  ymin			  "-1"
+		  ymax			  "1"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "removeconstantrows_reverse"
+		  SID			  "8813"
+		  Ports			  [1, 1]
+		  Position		  [220, 30, 260, 70]
+		  ZOrder		  3
+		  BackgroundColor	  "lightBlue"
+		  LibraryVersion	  "1.77"
+		  SourceBlock		  "neural/Processing Functions/removeconstantrows_reverse"
+		  SourceType		  "REMOVECONSTANTROWS Reverse Process"
+		  inputSize		  "1"
+		  constants		  "zeros(0,1)"
+		  rearrange		  "1"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "y"
+		  SID			  "8814"
+		  Position		  [320, 30, 360, 70]
+		  ZOrder		  4
+		  IconDisplay		  "Port number"
+		  PortDimensions	  "1"
+		  SampleTime		  "0.75"
+		  MaskDisplay		  "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(256+128"
+		  ");patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+e],[0 1 1"
+		  " 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+		  MaskIconFrame		  off
+		  MaskIconOpaque	  on
+		  MaskIconRotate	  "none"
+		  MaskPortRotate	  "default"
+		  MaskIconUnits		  "autoscale"
+		}
+		Line {
+		  SrcBlock		  "a"
+		  SrcPort		  1
+		  DstBlock		  "mapminmax_reverse"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "mapminmax_reverse"
+		  SrcPort		  1
+		  DstBlock		  "removeconstantrows_reverse"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "removeconstantrows_reverse"
+		  SrcPort		  1
+		  DstBlock		  "y"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      Goto
+	      Name		      "a{1}"
+	      SID		      "8815"
+	      Position		      [380, 40, 400, 60]
+	      ZOrder		      6
+	      GotoTag		      "feedback1"
+	      MaskDisplay	      "plot(cos(0:.1:2*pi),sin(0:.1:2*pi))"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Output"
+	      SID		      "8816"
+	      Position		      [380, 120, 400, 140]
+	      ZOrder		      3
+	      IconDisplay	      "Port number"
+	      InitialOutput	      "0"
+	      MaskDisplay	      "e = 0.06;c1 = [120 230 180]/255;c2 = ([120 230 180]+0)/(256+128);c3 = ([120 230 180]+128)/(2"
+	      "56+128);patch([0 1 1 0],[0 0 1 1],c1);patch([0 1 1 1-e 1-e 0+e],[0 0 1 1-e 0+e 0+e],c2);patch([0 0 1 1-e 0+e 0+"
+	      "e],[0 1 1 1-e 1-e 0+e],c3);plot([0 1 1 0 0],[0 0 1 1 0]);"
+	      MaskIconFrame	      off
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Line {
+	      SrcBlock		      "Input"
+	      SrcPort		      1
+	      DstBlock		      "Process Input 1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Process Output 1"
+	      SrcPort		      1
+	      DstBlock		      "Output"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Process Input 1"
+	      SrcPort		      1
+	      DstBlock		      "Layer 1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Layer 1"
+	      SrcPort		      1
+	      DstBlock		      "a{1}"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " a{1} "
+	      SrcPort		      1
+	      DstBlock		      "Layer 2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Layer 2"
+	      SrcPort		      1
+	      DstBlock		      "Process Output 1"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux"
+	  SID			  "8817"
+	  Ports			  [2, 1]
+	  Position		  [280, 37, 285, 268]
+	  ZOrder		  -16
+	  ShowName		  off
+	  Inputs		  "2"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation"
+	  SID			  "8818"
+	  Ports			  [1, 1]
+	  Position		  [135, 195, 165, 225]
+	  ZOrder		  -15
+	  InputPortMap		  "u0"
+	  UpperLimit		  "1"
+	  LowerLimit		  "-1"
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation1"
+	  SID			  "8819"
+	  Ports			  [1, 1]
+	  Position		  [485, 140, 515, 170]
+	  ZOrder		  -15
+	  InputPortMap		  "u0"
+	  UpperLimit		  "1"
+	  LowerLimit		  "-1"
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation2"
+	  SID			  "8820"
+	  Ports			  [1, 1]
+	  Position		  [135, 80, 165, 110]
+	  ZOrder		  -15
+	  InputPortMap		  "u0"
+	  UpperLimit		  "1"
+	  LowerLimit		  "-1"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "u (k)"
+	  SID			  "8821"
+	  Position		  [570, 148, 600, 162]
+	  ZOrder		  -20
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "w (k+1)"
+	  SrcPort		  1
+	  DstBlock		  "Saturation2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "ys (k)"
+	  SrcPort		  1
+	  DstBlock		  "Saturation"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Function Fitting Neural Network"
+	  SrcPort		  1
+	  DstBlock		  "Saturation1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Mux"
+	  SrcPort		  1
+	  DstBlock		  "Function Fitting Neural Network"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Saturation1"
+	  SrcPort		  1
+	  DstBlock		  "u (k)"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Saturation2"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Saturation"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
+	Annotation {
+	  SID			  "8824"
+	  Name			  "k+1"
+	  Position		  [255, 73]
+	}
+	Annotation {
+	  SID			  "8823"
+	  Name			  "k"
+	  Position		  [260, 186]
+	}
+	Annotation {
+	  SID			  "8822"
 	  Name			  "u k"
 	  Position		  [525, 200]
 	}
@@ -2802,7 +6071,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Motor Model I"
-	Location		[375, 163, 1468, 820]
+	Location		[183, 156, 1276, 813]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -4656,6 +7925,7 @@ Model {
 	  SID			  "4533"
 	  Position		  [180, 28, 215, 62]
 	  ZOrder		  -21
+	  X0			  "initSystemCondition"
 	  InputProcessing	  "Elements as channels (sample based)"
 	  SampleTime		  "sampleTime"
 	}
@@ -4665,6 +7935,7 @@ Model {
 	  SID			  "4534"
 	  Position		  [315, 208, 350, 242]
 	  ZOrder		  -21
+	  X0			  "initSystemCondition"
 	  InputProcessing	  "Elements as channels (sample based)"
 	  SampleTime		  "sampleTime"
 	}
@@ -4674,6 +7945,7 @@ Model {
 	  SID			  "4535"
 	  Position		  [315, 88, 350, 122]
 	  ZOrder		  -21
+	  X0			  "initSystemCondition"
 	  InputProcessing	  "Elements as channels (sample based)"
 	  SampleTime		  "sampleTime"
 	}
@@ -4789,7 +8061,7 @@ Model {
       Name		      "Motor Model II1"
       SID		      "8502"
       Ports		      [1, 1]
-      Position		      [855, 201, 950, 259]
+      Position		      [935, 291, 1030, 349]
       ZOrder		      -3
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -6783,11 +10055,22 @@ Model {
       }
     }
     Block {
+      BlockType		      Mux
+      Name		      "Mux1"
+      SID		      "139"
+      Ports		      [2, 1]
+      Position		      [700, 166, 705, 264]
+      ZOrder		      -16
+      ShowName		      off
+      Inputs		      "2"
+      DisplayOption	      "bar"
+    }
+    Block {
       BlockType		      SubSystem
-      Name		      "Motor Optim Model ws4"
+      Name		      "Opt. Model ws4"
       SID		      "8591"
       Ports		      [1, 1]
-      Position		      [435, 341, 530, 399]
+      Position		      [440, 311, 535, 369]
       ZOrder		      -1
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -6797,7 +10080,7 @@ Model {
       RequestExecContextInheritance off
       MaskHideContents	      off
       System {
-	Name			"Motor Optim Model ws4"
+	Name			"Opt. Model ws4"
 	Location		[182, 120, 1275, 777]
 	Open			off
 	ModelBrowserVisibility	off
@@ -8672,6 +11955,7 @@ Model {
 	  SID			  "8672"
 	  Position		  [180, 28, 215, 62]
 	  ZOrder		  -21
+	  X0			  "initSystemCondition"
 	  InputProcessing	  "Elements as channels (sample based)"
 	  SampleTime		  "sampleTime"
 	}
@@ -8681,6 +11965,7 @@ Model {
 	  SID			  "8673"
 	  Position		  [315, 208, 350, 242]
 	  ZOrder		  -21
+	  X0			  "initSystemCondition"
 	  InputProcessing	  "Elements as channels (sample based)"
 	  SampleTime		  "sampleTime"
 	}
@@ -8690,6 +11975,17 @@ Model {
 	  SID			  "8674"
 	  Position		  [315, 88, 350, 122]
 	  ZOrder		  -21
+	  X0			  "initSystemCondition"
+	  InputProcessing	  "Elements as channels (sample based)"
+	  SampleTime		  "sampleTime"
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay4"
+	  SID			  "8826"
+	  Position		  [160, 148, 195, 182]
+	  ZOrder		  -21
+	  X0			  "initSystemCondition"
 	  InputProcessing	  "Elements as channels (sample based)"
 	  SampleTime		  "sampleTime"
 	}
@@ -8704,16 +12000,8 @@ Model {
 	Line {
 	  SrcBlock		  "Saturation"
 	  SrcPort		  1
-	  Points		  [165, 0]
-	  Branch {
-	    Points		    [0, 60]
-	    DstBlock		    "Unit Delay2"
-	    DstPort		    1
-	  }
-	  Branch {
-	    DstBlock		    "Mux1"
-	    DstPort		    3
-	  }
+	  DstBlock		  "Unit Delay4"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Unit Delay3"
@@ -8773,6 +12061,20 @@ Model {
 	  DstBlock		  "Saturation"
 	  DstPort		  1
 	}
+	Line {
+	  SrcBlock		  "Unit Delay4"
+	  SrcPort		  1
+	  Points		  [70, 0]
+	  Branch {
+	    Points		    [0, 60]
+	    DstBlock		    "Unit Delay2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Mux1"
+	    DstPort		    3
+	  }
+	}
 	Annotation {
 	  SID			  "8680"
 	  Name			  "y k+1"
@@ -8801,22 +12103,11 @@ Model {
       }
     }
     Block {
-      BlockType		      Mux
-      Name		      "Mux1"
-      SID		      "139"
-      Ports		      [2, 1]
-      Position		      [700, 35, 705, 310]
-      ZOrder		      -16
-      ShowName		      off
-      Inputs		      "2"
-      DisplayOption	      "bar"
-    }
-    Block {
       BlockType		      Scope
       Name		      "Scope"
       SID		      "43"
       Ports		      [1]
-      Position		      [755, 159, 785, 191]
+      Position		      [745, 199, 775, 231]
       ZOrder		      -3
       Floating		      off
       Location		      [5, 56, 1367, 745]
@@ -8862,7 +12153,7 @@ Model {
       Name		      "Sum1"
       SID		      "8307"
       Ports		      [2, 1]
-      Position		      [140, 215, 160, 235]
+      Position		      [245, 215, 265, 235]
       ZOrder		      -18
       ShowName		      off
       IconShape		      "round"
@@ -8888,16 +12179,16 @@ Model {
     }
     Block {
       BlockType		      Reference
-      Name		      "Testovaci sekv. Norm"
+      Name		      "Testovaci sekv. \nNormalizovaná"
       SID		      "8406"
       Ports		      [0, 1]
-      Position		      [40, 210, 70, 240]
+      Position		      [170, 210, 200, 240]
       ZOrder		      -18
       LibraryVersion	      "1.260"
       SourceBlock	      "simulink/Sources/Repeating\nSequence\nStair"
       SourceType	      "Repeating Sequence Stair"
       OutValues		      "[.4 -.6 0 0 0 0 -0.5 -1].'"
-      tsamp		      "15"
+      tsamp		      "20"
       OutMin		      "[]"
       OutMax		      "[]"
       OutDataTypeStr	      "double"
@@ -8908,24 +12199,15 @@ Model {
       LockScale		      off
     }
     Block {
-      BlockType		      UnitDelay
-      Name		      "Unit Delay1"
-      SID		      "8410"
-      Position		      [440, 438, 475, 472]
-      ZOrder		      4
-      BlockMirror	      on
-      InputProcessing	      "Elements as channels (sample based)"
-      SampleTime	      "sampleTime"
-    }
-    Block {
-      BlockType		      UnitDelay
-      Name		      "Unit Delay4"
-      SID		      "8409"
-      Position		      [340, 403, 375, 437]
-      ZOrder		      4
-      BlockMirror	      on
-      InputProcessing	      "Elements as channels (sample based)"
-      SampleTime	      "sampleTime"
+      BlockType		      ToWorkspace
+      Name		      "To Workspace"
+      SID		      "8825"
+      Ports		      [1]
+      Position		      [745, 260, 805, 290]
+      ZOrder		      -7
+      VariableName	      "simout"
+      MaxDataPoints	      "inf"
+      SampleTime	      "0.75"
     }
     Block {
       BlockType		      Reference
@@ -8937,8 +12219,8 @@ Model {
       LibraryVersion	      "1.260"
       SourceBlock	      "simulink/Sources/Repeating\nSequence\nStair"
       SourceType	      "Repeating Sequence Stair"
-      OutValues		      "[0 0 0 0 .6 0 0 0].'"
-      tsamp		      "15"
+      OutValues		      "[0 0 0 0 -.2 0 0 0].'"
+      tsamp		      "20"
       OutMin		      "[]"
       OutMax		      "[]"
       OutDataTypeStr	      "double"
@@ -8951,33 +12233,41 @@ Model {
     Line {
       SrcBlock		      "Mux1"
       SrcPort		      1
-      DstBlock		      "Scope"
-      DstPort		      1
+      Points		      [5, 0]
+      Branch {
+	DstBlock		"Scope"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 60]
+	DstBlock		"To Workspace"
+	DstPort			1
+      }
     }
     Line {
-      SrcBlock		      "INN Regulator I.4 data3"
+      SrcBlock		      "Iverz. Model1"
       SrcPort		      1
-      Points		      [70, 0]
+      Points		      [25, 0]
       Branch {
 	DstBlock		"Motor Model I"
 	DstPort			1
       }
       Branch {
-	Points			[0, 130]
-	DstBlock		"Motor Optim Model ws4"
+	Points			[0, 100]
+	DstBlock		"Opt. Model ws4"
 	DstPort			1
       }
     }
     Line {
-      SrcBlock		      "Testovaci sekv. Norm"
+      SrcBlock		      "Testovaci sekv. \nNormalizovaná"
       SrcPort		      1
-      Points		      [35, 0]
+      Points		      [15, 0]
       Branch {
 	DstBlock		"Sum1"
 	DstPort			1
       }
       Branch {
-	Points			[0, -120]
+	Points			[0, -35]
 	DstBlock		"Mux1"
 	DstPort			1
       }
@@ -8985,22 +12275,22 @@ Model {
     Line {
       SrcBlock		      "Sum1"
       SrcPort		      1
-      DstBlock		      "INN Regulator I.4 data3"
+      DstBlock		      "Iverz. Model1"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Motor Optim Model ws4"
+      SrcBlock		      "Opt. Model ws4"
       SrcPort		      1
-      Points		      [40, 0]
+      Points		      [35, 0]
       Branch {
 	Points			[75, 0]
 	DstBlock		"Sum"
 	DstPort			2
       }
       Branch {
-	Points			[0, 50]
-	DstBlock		"Unit Delay4"
-	DstPort			1
+	Points			[0, 55; -290, 0; 0, -140]
+	DstBlock		"Iverz. Model1"
+	DstPort			2
       }
     }
     Line {
@@ -9032,22 +12322,8 @@ Model {
     Line {
       SrcBlock		      "Sum"
       SrcPort		      1
-      Points		      [10, 0; 0, 155]
-      DstBlock		      "Unit Delay1"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Unit Delay1"
-      SrcPort		      1
-      Points		      [-285, 0]
+      Points		      [10, 0; 0, 130; -420, 0]
       DstBlock		      "Sum1"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Unit Delay4"
-      SrcPort		      1
-      Points		      [-105, 0; 0, -165]
-      DstBlock		      "INN Regulator I.4 data3"
       DstPort		      2
     }
     Annotation {

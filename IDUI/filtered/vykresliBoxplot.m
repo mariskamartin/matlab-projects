@@ -15,3 +15,5 @@ function vykresliBoxplot(pomFileVariable)
         groups = pomFileVariable(:,1);
     end
     boxplot(data, groups);
+    xlabel('Topologie');
+    ylabel('Hodnota kritéria');

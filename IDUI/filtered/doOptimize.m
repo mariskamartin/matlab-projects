@@ -27,10 +27,9 @@ mkdir(folderName);
 %vlastni cyklus pro uceni a ukladani nejlepsich vysledku
 for k = 1:length(optimizedTopology)
     [net, trainResults] = learnNet(inputs, targets, optimizedTopology{k}, maxTrainTimeInSec);
-    % vyhodnotit a pripadne spustit znovu
     crit = Criteria(net, inputs, targets); 
-    critValue = crit.getValue(); %[minimalizujeme]
-    simplefitOutputs = net(inputs);
+    critValue = crit.getValue(); %vypocet kriteria [minimalizujeme]
+    simplefitOutputs = net(inputs); %simulace hodnot
     actPerformance = perform(net, targets, simplefitOutputs);
     disp([num2str(k) '. top/perf/criteria [' num2str(optimizedTopology{k}) ', ' num2str(actPerformance) ', ' num2str(critValue) ']']);
     if(critValue < min(criterias)) 

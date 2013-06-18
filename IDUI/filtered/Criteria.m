@@ -24,7 +24,10 @@ classdef Criteria < handle
 
             % debug information
 %             disp(['log10 z ' num2str((realY-nnY)*(realY-nnY)'/length(realY))]);
-            plot(realY); hold on; plot(nnY, 'r'); hold off;
+            t = 0:0.75:(0.75*length(in)-0.5);
+            plot(t,realY); hold on; plot(t,nnY, 'r'); hold off;
+            legend('u reálný','u inverze');
+            xlabel('Èas');
         end
     end
     methods (Static)
