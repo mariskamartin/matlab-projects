@@ -1,6 +1,6 @@
 %tracking of mouse 2D-movement
 %inspired on https://www.cs.utexas.edu/~teammco/misc/kalman_filter/
-f=@(x)sin(x);%sin(x);
+f=@(x) sin(x)+cos(x.^0.5); %sin(x);
 x=1:0.1:4*pi;
 y=f(x);
 rng('default');
