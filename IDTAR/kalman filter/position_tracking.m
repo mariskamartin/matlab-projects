@@ -1,4 +1,4 @@
-%tracking of mouse 2D-movement
+%tracking of mouse 2D-position
 %inspired on https://www.cs.utexas.edu/~teammco/misc/kalman_filter/
 f=@(x) 2.3; %sin(x);
 x=1:0.1:4*pi;
