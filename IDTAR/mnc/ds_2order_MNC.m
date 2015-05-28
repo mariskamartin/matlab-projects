@@ -22,10 +22,13 @@ for k=1:length(u)
   x = A*x + B*u(k);
 end
 
-[A, B]=MNC(y(10:end),u(10:end),2,2);
-v = mnc2(w, y, ones(1,length(u)),4);
+%identifikace parametru pomoci MNC
+[A, B]=MNC(y(3:end),u(3:end),2,2);
 
-gy = polyval(v,w);
+for k=3:length(u)
+    gy(k) = B(1)*u(k-1)+B(2)*u(k-2)-A(1)*y(k-1)-A(2)*y(k-2);
+end
+
 
 clf;
 hold on; 
