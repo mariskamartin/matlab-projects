@@ -26,6 +26,11 @@ Zx = inv(eye(length(A))-A)*B;
 Zxy = Zx*inv(C*Zx+D);
 M = R+Syu'*Q*Syu+Sxu'*Qn*Sxu;
 un0=zeros(N,1);
+opt=optimset('Algorithm','active-set','LargeScale','off','Display','off'); %parametry pro ompitmalizaci v quadprog
+%s omezenim
+qA = [eye(N); -eye(N)];
+umax = 1.5; umin = -1.5;
+
 % simulace
 y = zeros(1,length(u));
 for k = 2:length(u)-N
@@ -36,7 +41,10 @@ for k = 2:length(u)-N
     wn=w(k:k+N-1)'; % wn=w(k)*ones(N,1);
     dwn=wn-Syx*x-Syu*un0;
     m=-(Sxu'*Qn*dxn+Syu'*Q*dwn);
-    du=-M\m; %analiticke reseni  %quadprog(M,m); %bez omezeni
+%     du=-M\m; %analiticke reseni  %quadprog(M,m); %bez omezeni
+    %priprava pro omezeni
+    qb = [umax-un0; un0-umin];
+    du = quadprog(M, m, qA, qb,[],[],[],[],[],opt);
     un0=un0+du; %aktualizace pro dalsi kolo 
     u(k)=un0(1);
 end
@@ -48,5 +56,6 @@ stairs(T(1:end-1),y,'-r');
 stairs(T(1:end-1),u,':k');
 legend('w','y','u')
 hold off; 
+% grid on;
 axis([0 T(end) -3 5]);
 
