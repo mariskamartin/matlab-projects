@@ -6,7 +6,7 @@ function [Syx, Syu, Sxx, Sxu] = predictiveMatrixes(A,B,C,N)
 Sxx = A^N;
 for n = 1:N
     Sxu(:,n) = A^(N-n)*B; 
-    Syx(n,:) = C*A^n*B; 
+    Syx(n,:) = C*A^n; 
 end
 
 for n=0:N-1
