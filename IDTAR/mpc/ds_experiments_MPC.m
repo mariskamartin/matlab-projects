@@ -7,19 +7,19 @@ clear all;
 Ts = 0.1; %time stamp / vzorkovaci perioda
 numOfValues = 100; %number of values in one step 
 %vytvoreni systemu 2. radu
-sysTF = tf(1,[1 1 1]); 
+sysTF = tf(1,[5 1]); 
 
 D=c2d(sysTF,Ts); %to discreet representation
 [A,B,C,D]=ssdata(D); %to state space model
+x = [0]; %initial state - vertical
 
 u = zeros(1,numOfValues*3); %input data for step
 w = [0*ones(1,numOfValues) 1*ones(1,numOfValues) 0*ones(1,numOfValues)]; %reference variable
 T = 0:Ts:length(u)*Ts; %time data
-x = [0; 0]; %initial state - vertical
 
 % inicializace regulatoru
 N = 10; %horizont
-R = eye(N);
+R = eye(N)*1e-5;
 Q = eye(N); Qn = eye(length(x)); %Qn ... penalizace koncoveho stavu
 [Syx,Syu,Sxx,Sxu] = predictiveMatrixes(A,B,C,N);
 Zx = inv(eye(length(A))-A)*B;
@@ -29,13 +29,13 @@ un0=zeros(N,1);
 opt=optimset('Algorithm','active-set','LargeScale','off','Display','off'); %parametry pro ompitmalizaci v quadprog
 %s omezenim
 qA = [eye(N); -eye(N)];
-umax = 1.5; umin = -1.5;
+umax = 1000; umin = -1000;
 
 % simulace
 y = zeros(1,length(u));
 for k = 2:length(u)-N
     x=A*x+B*u(k-1);
-    y(k)=C*x+D*u(k); % predpoklad ze u(k) ma z minula stale stejnou honodtu: y(k)= C*x + D*u(k-1)
+    y(k)=C*x+D*u(k); % predpoklad ze u(k) ma z minula stale stejnou honodtu: y(k)= C*x + D*u(k)
     un0=[un0(2:end); un0(end)]; %shift minulych hodnot
     dxn=Zxy*w(k+N-1)-Sxx*x-Sxu*un0;
     wn=w(k:k+N-1)'; % wn=w(k)*ones(N,1);
