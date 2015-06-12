@@ -33,17 +33,20 @@ for k = 2:length(u)-N
     x=A*x+B*u(k-1);
     un0=[un0(2:end); un0(end)]; %shift minulych hodnot
     dxn=Zxy*w(k+N-1)-Sxx*x-Sxu*un0;
-    dwn=w(k:k+N-1)'-Syx*x-Syu*un0;
+    wn=w(k:k+N-1)'; % wn=w(k)*ones(N,1);
+    dwn=wn-Syx*x-Syu*un0;
     m=-(Sxu'*Qn*dxn+Syu'*Q*dwn);
     du=-M\m; %analiticke reseni  %quadprog(M,m); %bez omezeni
     un0=un0+du; %aktualizace pro dalsi kolo 
     u(k)=un0(1);
 end
 
+figure;
 stairs(T(1:end-1),w,'-b');
 hold on; 
 stairs(T(1:end-1),y,'-r');
 stairs(T(1:end-1),u,':k');
 legend('w','y','u')
 hold off; 
+axis([0 T(end) -3 5]);
 
