@@ -14,16 +14,16 @@ D=c2d(sysTF,Ts); %to discreet representation
 Nx = size(A,1);
 Nu = size(B,2);
 
-u = ones(1,numOfValues*3); %input data for step
 w = [ones(1,numOfValues) 2*ones(1,numOfValues) 2.6*ones(1,numOfValues)]; %reference variable
-T = 0:Ts:length(u)*Ts; %time data
+u = zeros(size(w)); %input data for step
+T = 0:Ts:length(w)*Ts; %time data
 x = [0; 0]; %initial state - vertical
 
 %inicializace regulatoru
 Qn = 1*eye(Nx);    % matice penalizaci koncoveho stavu
-R = 1*eye(Nu);   % matice penalizaci akcnich zasahu
-Q = 100;          % matice penalizaci regulacnich odchylek
-Nn=20; %Horizont rizeni
+R = 0.0001*eye(Nu);   % matice penalizaci akcnich zasahu
+Q = 1;          % matice penalizaci regulacnich odchylek
+Nn=10; %Horizont rizeni
 
 % *** Inicializace pro Kalmanuv filtr
 xkal=zeros(length(A),1); Ge=eye(2,1)*1000; Pkal=0;
@@ -31,11 +31,11 @@ Qkal=1; %..presnost
 Rkal=1; %..akce
 
 % simulace
-y = zeros(1,length(u));
-for k = 1:length(u)-Nn
-    y(k)= C*x + D*u(k);
+y = zeros(1,length(w));
+for k = 2:length(w)-Nn
+    y(k)= C*x + D*u(k-1);
     % adaptivni kalman
-    [xkal, Pkal]=adaptKalmanEstim(A, B, C, D, Ge, Qkal, Rkal, xkal, y(k), u(k), Pkal);       %Kalmanuv filtr
+%     [xkal, Pkal]=adaptKalmanEstim(A, B, C, D, Ge, Qkal, Rkal, xkal, y(k), u(k), Pkal);       %Kalmanuv filtr
 
     wHorizont = w(k:k+Nn-1)';
     [K, l]=LQoptimise(A, B, C, D, Qn, Q, R, wHorizont);
