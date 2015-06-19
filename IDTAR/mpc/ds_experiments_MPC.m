@@ -18,8 +18,8 @@ w = [0*ones(1,numOfValues) 1*ones(1,numOfValues) 0*ones(1,numOfValues)]; %refere
 T = 0:Ts:length(u)*Ts; %time data
 
 % inicializace regulatoru
-N = 10; %horizont
-R = eye(N)*1e-5;
+N = 20; %horizont
+R = eye(N); %pri neomezenem zasahu a malem R, R = eye(N)*1e-5; se dostaneme na DeadBeat regulaci
 Q = eye(N); Qn = eye(length(x)); %Qn ... penalizace koncoveho stavu
 [Syx,Syu,Sxx,Sxu] = predictiveMatrixes(A,B,C,N);
 Zx = inv(eye(length(A))-A)*B;
@@ -29,7 +29,7 @@ un0=zeros(N,1);
 opt=optimset('Algorithm','active-set','LargeScale','off','Display','off'); %parametry pro ompitmalizaci v quadprog
 %s omezenim
 qA = [eye(N); -eye(N)];
-umax = 1000; umin = -1000;
+umax = 2; umin = -2;
 
 % simulace
 y = zeros(1,length(u));
