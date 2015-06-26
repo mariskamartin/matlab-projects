@@ -6,8 +6,8 @@ clear all;
     sysTF = tf([0 1],[1 1 1]); 
     x = [0; 0];
     
-    D=c2d(sysTF,Ts); %to discreet representation
-    [A,B,C,D]=ssdata(D); %to state space model
+    sysTFDiscrete=c2d(sysTF,Ts); %to discreet representation
+    [A,B,C,D]=ssdata(sysTFDiscrete); %to state space model
     Nx = size(A,1);
     Nu = size(B,2);    
     
