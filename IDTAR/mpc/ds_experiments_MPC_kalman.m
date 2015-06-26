@@ -18,7 +18,7 @@ w = [0*ones(1,numOfValues) 1.5*ones(1,numOfValues) 0*ones(1,numOfValues)]; %refe
 T = 0:Ts:length(u)*Ts; %time data
 
 % inicializace regulatoru
-N = 20; %horizont
+N = 10; %horizont
 R = eye(N); %pri neomezenem zasahu a malem R, R = eye(N)*1e-5; se dostaneme na DeadBeat regulaci
 Q = eye(N); Qn = eye(length(x)); %Qn ... penalizace koncoveho stavu
 [Syx,Syu,Sxx,Sxu] = predictiveMatrixes(A,B,C,N);
@@ -40,7 +40,7 @@ y = zeros(1,length(u));
 for k = 2:length(u)-N
 %     x=A*x+B*u(k-1);
     y(k)=C*x+D*u(k-1); % predpoklad ze u(k) ma z minula stale stejnou honodtu: y(k)= C*x + D*u(k-1)
-    % estimation
+    % estimation from IO
     [~, x] = kalEstimator.estimate(u(k-1), y(k));
     un0=[un0(2:end); un0(end)]; %shift minulych hodnot
     dxn=Zxy*w(k+N-1)-Sxx*x-Sxu*un0;

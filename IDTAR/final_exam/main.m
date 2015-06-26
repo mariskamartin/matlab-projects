@@ -3,8 +3,8 @@ clear all;
     valuesCount = 150; % 15 s
     Ts = 0.1; %time stamp / vzorkovaci perioda
     wn = 0;       % delka horizontu rizeni
-    sysTF = tf(1,[1 1 1]); 
-    x = [0; 0];
+    sysTF = tf(1,[5 1]); 
+    x = [0];
     
     D=c2d(sysTF,Ts); %to discreet representation
     [A,B,C,D]=ssdata(D); %to state space model
@@ -31,6 +31,9 @@ clear all;
     y = zeros(1, length(w));
     u = zeros(1, length(w));
     for k = 2:length(w)-wn
+        % state update
+        x = A*x + B*u(k-1);
+        % output
         y(k)= C*x + D*u(k-1);
         % estimation
 %         [ye, x] = kalEstimator.setPlant(A,B,C,D).estimate(u(k-1), y(k));
@@ -39,14 +42,12 @@ clear all;
         %no control
 %         u(k) = w(k);
         %PID control
-%         u(k) = pid.evalControlAction(w(k), y(k));
+        u(k) = pid.evalControlAction(w(k), y(k));
         %PA control
         %LQ control
 %         [K, l] = LQoptimise(A, B, C, D, 0, Qlq, Rlq, w(k:k+wn-1)');
 %         u(k)=-K*x+l;        
         %MPC control
-        % state update
-        x = A*x + B*u(k);
     end
 % tisk vysledku
     figure;

@@ -35,7 +35,7 @@ umax = 2; umin = -2;
 y = zeros(1,length(u));
 for k = 2:length(u)-N
     x=A*x+B*u(k-1);
-    y(k)=C*x+D*u(k); % predpoklad ze u(k) ma z minula stale stejnou honodtu: y(k)= C*x + D*u(k)
+    y(k)=C*x+D*u(k-1); 
     un0=[un0(2:end); un0(end)]; %shift minulych hodnot
     dxn=Zxy*w(k+N-1)-Sxx*x-Sxu*un0;
     wn=w(k:k+N-1)'; % wn=w(k)*ones(N,1);
