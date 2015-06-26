@@ -20,8 +20,8 @@ T = 0:Ts:length(w)*Ts; %time data
 x = [0; 0]; %initial state - vertical
 
 %inicializace regulatoru
-Qn = 1*eye(Nx);    % matice penalizaci koncoveho stavu
-R = 0.0001*eye(Nu);   % matice penalizaci akcnich zasahu
+% Qn = 0*eye(Nx);    % matice penalizaci koncoveho stavu
+R = 0.01;   % matice penalizaci akcnich zasahu
 Q = 1;          % matice penalizaci regulacnich odchylek
 Nn=10; %Horizont rizeni
 
@@ -34,12 +34,10 @@ Rkal=1; %..akce
 y = zeros(1,length(w));
 for k = 2:length(w)-Nn
     y(k)= C*x + D*u(k-1);
-    % adaptivni kalman
-%     [xkal, Pkal]=adaptKalmanEstim(A, B, C, D, Ge, Qkal, Rkal, xkal, y(k), u(k), Pkal);       %Kalmanuv filtr
 
     wHorizont = w(k:k+Nn-1)';
-    [K, l]=LQoptimise(A, B, C, D, Qn, Q, R, wHorizont);
-    u(k)=-K*xkal+l;
+    [K, l]=LQoptimise(A, B, C, D, 0, Q, R, wHorizont);
+    u(k)=-K*x+l;
     
     x = A*x + B*u(k);
 end

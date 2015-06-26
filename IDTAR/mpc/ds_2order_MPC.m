@@ -38,8 +38,8 @@ for k = 2:length(u)-N
     y(k)=C*x+D*u(k); % predpoklad ze u(k) ma z minula stale stejnou honodtu: y(k)= C*x + D*u(k-1)
     un0=[un0(2:end); un0(end)]; %shift minulych hodnot
     dxn=Zxy*w(k+N-1)-Sxx*x-Sxu*un0;
-    wn=w(k:k+N-1)'; % wn=w(k)*ones(N,1);
-    dwn=wn-Syx*x-Syu*un0;
+    wr=w(k:k+N-1)'; % wn=w(k)*ones(N,1);
+    dwn=wr-Syx*x-Syu*un0;
     m=-(Sxu'*Qn*dxn+Syu'*Q*dwn);
 %     du=-M\m; %analiticke reseni  %quadprog(M,m); %bez omezeni
     %priprava pro omezeni

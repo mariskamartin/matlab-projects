@@ -7,11 +7,11 @@ clear all;
 Ts = 0.1; %time stamp / vzorkovaci perioda
 numOfValues = 100; %number of values in one step 
 %vytvoreni systemu 2. radu
-sysTF = tf(1,[5 1]); 
+sysTF = tf(1,[1 1 1]); 
 
 D=c2d(sysTF,Ts); %to discreet representation
 [A,B,C,D]=ssdata(D); %to state space model
-x = [0]; %initial state - vertical
+x = [0; 0]; %initial state - vertical
 
 u = zeros(1,numOfValues*3); %input data for step
 w = [0*ones(1,numOfValues) 1.5*ones(1,numOfValues) 0*ones(1,numOfValues)]; %reference variable
