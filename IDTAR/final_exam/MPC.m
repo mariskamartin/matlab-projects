@@ -25,7 +25,7 @@ classdef MPC < handle
             this.mWn = wn;
             this.mv = struct(); 
 
-            [Syx,Syu,Sxx,Sxu] = predictiveMatrixes(A,B,C,wn);
+            [Syx,Syu,Sxx,Sxu] = MPC.predictiveMatrixes(A,B,C,wn);
             Zx = inv(eye(length(A))-A)*B;
             Zxy = Zx*inv(C*Zx+D);
             M = R+Syu'*Q*Syu+Sxu'*Qn*Sxu;
@@ -78,6 +78,9 @@ classdef MPC < handle
             this.mConstraints.uMin = minU;
         end
         
+    end
+    
+    methods (Static)
         %PREDICTIVEMATRIXES creates predictive matrixes 
         % A,B,C ... system characteristics
         % N     ... number of see-ahead ()

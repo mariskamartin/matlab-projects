@@ -21,7 +21,7 @@ T = 0:Ts:length(u)*Ts; %time data
 N = 20; %horizont
 R = eye(N); %pri neomezenem zasahu a malem R, R = eye(N)*1e-5; se dostaneme na DeadBeat regulaci
 Q = eye(N); Qn = eye(length(x)); %Qn ... penalizace koncoveho stavu
-[Syx,Syu,Sxx,Sxu] = predictiveMatrixes(A,B,C,N);
+[Syx,Syu,Sxx,Sxu] = MPC.predictiveMatrixes(A,B,C,N);
 Zx = inv(eye(length(A))-A)*B;
 Zxy = Zx*inv(C*Zx+D);
 M = R+Syu'*Q*Syu+Sxu'*Qn*Sxu;

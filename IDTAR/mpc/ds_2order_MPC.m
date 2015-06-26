@@ -21,7 +21,7 @@ x = [0; 0]; %initial state - vertical
 N = 10; %horizont
 R = eye(N);
 Q = eye(N); Qn = eye(length(x)); %Qn ... penalizace koncoveho stavu
-[Syx,Syu,Sxx,Sxu] = predictiveMatrixes(A,B,C,N);
+[Syx,Syu,Sxx,Sxu] = MPC.predictiveMatrixes(A,B,C,N);
 Zx = inv(eye(length(A))-A)*B;
 Zxy = Zx*inv(C*Zx+D);
 M = R+Syu'*Q*Syu+Sxu'*Qn*Sxu;
