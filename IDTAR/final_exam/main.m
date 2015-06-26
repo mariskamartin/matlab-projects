@@ -22,6 +22,11 @@ clear all;
     % PID
         pid = PIDreg(5, 2, 0, Ts); 
     % PA
+        poles = conv([1/3 1], [1/2 1]); %(1/3s + 1)(1/2s + 1) 
+        citatel = sysTF.num{1}; jmenovatel = sysTF.den{1};        
+        [X, Y, R] = PAdiofant(jmenovatel, citatel, poles);    
+        closedLoopSystem = tf(conv(R, citatel), conv(X,jmenovatel) + conv(Y, citatel));
+        [A,B,C,D]=ssdata(c2d(closedLoopSystem,Ts)); %to discreet representation, to state space model
     % LQ
         Rlq = 0.01;     % matice penalizaci akcnich zasahu
         Qlq = 1;        % matice penalizaci regulacnich odchylek
@@ -48,11 +53,12 @@ clear all;
         %PID control
             %u(k) = pid.evalControlAction(w(k), y(k));
         %PA control
+            u(k) = w(k);
         %LQ control
             %[K, l] = LQoptimise(A, B, C, D, 0, Qlq, Rlq, w(k:k+wn-1)');
             %u(k)=-K*x+l;        
         %MPC control
-            u(k)=mpc.evalControlAction(x, w(k:k+wn-1)');
+            %u(k)=mpc.evalControlAction(x, w(k:k+wn-1)');
         
     end
 % tisk vysledku

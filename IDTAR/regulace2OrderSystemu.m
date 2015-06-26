@@ -2,7 +2,7 @@ clear; clc;
 %vytvoreni systemu
 % sysTF = tf([0 0 2],[1 2 5]) %zatim nelze
 % sysTF = tf([0 1 6],[1 1 1])
-sysTF = tf([0 1 1],[1 1 1])
+sysTF = tf([1 1],[1 1 1])
 step(sysTF);
 figure;
 
