@@ -20,11 +20,11 @@ Nu = size(B,2);
 %synteza regulatoru -------------------------------------------------------
 %zvolene poly vysledne prenosove funkce
 % poles = [1 10 25]; %(s + 5)(s + 5)
-% poles = [1 4 4]; %(s + 2)(s + 2)
+% poles = [3/1 1];
 % poles = [1 8 12]; %(s + 6)(s + 2)
 % poles = conv([1 3], [1 2]);; %(s + 3)(s + 2) 
-poles = conv([1/2 1], [1/1.1 1]); %(s + 1)
-% poles = conv([1/3 1], [1/2 1]); %(1/3s + 1)(1/2s + 1) 
+% poles = conv([1/2 1], [1/1.1 1]); %(s + 1)
+poles = conv([1 1/2.5], [1/1.5 1]); 
 % poles = [1 2 5]; % -1 +- 2i
 
 %navrh pomoci diofanticke rovnice, z B/A na Y/X\
