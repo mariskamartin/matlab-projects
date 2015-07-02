@@ -1,4 +1,4 @@
-function [ Q, P, R ] = PAdiofant( A, B, C, isDiscreete)
+function [ Q, P, R ] = PAdiofant( A, B, Cp, isDiscreete)
 %DIOFANT ... searching solution for diophantic polynomial inputs for equotation AX + BY = C
 % A,B,C ... horizontal vectors
 % returns Q,P ... horizontal vectors
@@ -12,12 +12,12 @@ function [ Q, P, R ] = PAdiofant( A, B, C, isDiscreete)
 %                    *----| - | ------*
 %                         | Q |
 
-    l = [length(C)-length(B) length(A)-1];
+    l = [length(Cp)-length(B) length(A)-1];
     % nx = length(B) - 1; %rad polynomu X
-    ny = l((length(C) < (length(A) + length(B))) + 1); 
+    ny = l((length(Cp) < (length(A) + length(B))) + 1); 
 
     M = sylvester(A, B);
-    C = prepareSolutionVector(M, C);
+    C = prepareSolutionVector(M, Cp); 
     solution = M\C; %inv(M)*C; .. performance
     if norm(M*solution-C) > 0.001 % if this is zero or very small, we have a solution
         error('solutioin NOT exists');
@@ -31,8 +31,8 @@ function [ Q, P, R ] = PAdiofant( A, B, C, isDiscreete)
         % pro diskretni variantu je to sum(C)/sum(B)
         R = sum(C)/sum(B);
     else
-        % pro spojitou variantu je to b0/a0
-        R = C(end)/B(end);
+        % pro spojitou variantu je to c0/a0
+        R = Cp(end)/B(end); %zde je mozna stale chyba se zesilenim c0
     end
 end
 

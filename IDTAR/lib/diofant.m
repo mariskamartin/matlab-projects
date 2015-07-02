@@ -49,7 +49,7 @@ end
 %% Prepate solution vector for b = inv(A) * x
 function out = prepareSolutionVector(A, x)
     % pad x with zeros
-    out = [zeros(1,length(A)-length(x)) x];
+    out = [x zeros(1,length(A)-length(x))];
     % transpose
     out = out';
 end
