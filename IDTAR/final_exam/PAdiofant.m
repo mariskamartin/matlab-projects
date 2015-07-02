@@ -1,16 +1,16 @@
-function [ X, Y, R ] = PAdiofant( A, B, C )
+function [ Q, P, R ] = PAdiofant( A, B, C, isDiscreete)
 %DIOFANT ... searching solution for diophantic polynomial inputs for equotation AX + BY = C
 % A,B,C ... horizontal vectors
-% returns X,Y ... horizontal vectors
+% returns Q,P ... horizontal vectors
 % return R ... horiz. vector
 % for:
 %          | R |          | B |
 %  w ----->| - |---->X--->| - | ------*----> y
-%          | X |     |    | A |       |
+%          | Q |     |    | A |       |
 %                    |                |
-%                    |    | Y |       |
+%                    |    | P |       |
 %                    *----| - | ------*
-%                         | X |
+%                         | Q |
 
     l = [length(C)-length(B) length(A)-1];
     % nx = length(B) - 1; %rad polynomu X
@@ -23,9 +23,17 @@ function [ X, Y, R ] = PAdiofant( A, B, C )
         error('solutioin NOT exists');
     end
     
-    X = solution(1:end-ny)';
-    Y = solution(end-ny+1:end)';
-    R = lpad(1,length(B));
+    Q = solution(1:end-ny)';
+    P = solution(end-ny+1:end)';
+    % R - je zesileni ktere v ustalenem stavu musi byt rovno zadane
+    % velicine.
+    if isDiscreete
+        % pro diskretni variantu je to sum(C)/sum(B)
+        R = sum(C)/sum(B);
+    else
+        % pro spojitou variantu je to b0/a0
+        R = C(end)/B(end);
+    end
 end
 
 
@@ -58,8 +66,8 @@ end
 
 %% Prepate solution vector for b = inv(A) * x
 function out = prepareSolutionVector(A, x)
-    % pad x with zeros
-    out = [zeros(1,length(A)-length(x)) x];
+    % pad x with zeros from right side
+    out = [x zeros(1,length(A)-length(x))];
     % transpose
     out = out';
 end
